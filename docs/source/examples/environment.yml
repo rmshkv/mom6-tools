@@ -1,0 +1,19 @@
+name: mom6-diagnostics
+channels:
+    - conda-forge
+    - nodefaults
+dependencies:
+    - numpy
+    - xarray
+    - matplotlib
+    - cartopy
+    - dask
+    - jupyter
+    - jupyterlab
+    - netCDF4
+    - ncar-jobqueue
+    - nc-time-axis
+    - dask-labextension
+    - pip
+    - pip:
+      - git+https://github.com/NCAR/mom6-tools.git

@@ -9,7 +9,7 @@ data_sources:
 ###
 # computation config keys
 computation_config: 
-    default_kernel_name: mom6_solutions
+    default_kernel_name: mom6-diagnostics
     use_cluster: True
     account: NCGD0011
 
