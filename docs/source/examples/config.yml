@@ -22,7 +22,7 @@ book_toc:
   parts:
     - caption: mom6-tools example notebooks
       chapters:
-        - file: close_tracer_budgets
+        #- file: close_tracer_budgets
         - file: combining-tiles
         - file: diags_case
         - file: Equatorial_comparison
