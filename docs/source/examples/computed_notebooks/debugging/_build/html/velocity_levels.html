@@ -1,0 +1,828 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Velocity at Depth Levels &#8212; mom6_solutions automation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'velocity_levels';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Meridional Overturning" href="meridional_overturning.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">mom6_solutions automation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">mom6-tools example notebooks</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Equatorial_comparison.html">Equatorial Upperocean model vs. obs comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ocean_stats.html">Ocean Stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="poleward_heat_transport.html">Poleward Heat Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="section_transports.html">Transport across sections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="surface.html">Analysis of Surface Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TS_drift.html">Horizontal Mean difference and RMS: model versus observations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TS_levels.html">Temperature and Salinity at Depth Levels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meridional_overturning.html">Meridional Overturning</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Velocity at Depth Levels</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://jupyterhub.hpc.ucar.edu/hub/user-redirect/git-pull?repo=https%3A//github.com/rmshkv/nbscuid&urlpath=lab/tree/nbscuid/notebooks/velocity_levels.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onJupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/velocity_levels.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Velocity at Depth Levels</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zonal-velocity">Zonal velocity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#meridional-velocity">Meridional velocity</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="velocity-at-depth-levels">
+<h1>Velocity at Depth Levels<a class="headerlink" href="#velocity-at-depth-levels" title="Permalink to this heading">#</a></h1>
+<p>The goal of this notebook is the following:</p>
+<ol class="arabic simple">
+<li><p>serve as an example of how to post-process CESM/MOM6 output;</p></li>
+<li><p>create time averages of Eulerian velocity fields at depth levels;</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">mom6_tools.MOM6grid</span> <span class="kn">import</span> <span class="n">MOM6grid</span>
+<span class="kn">from</span> <span class="nn">mom6_tools.m6plot</span> <span class="kn">import</span> <span class="n">xyplot</span>
+<span class="kn">from</span> <span class="nn">mom6_tools.DiagsCase</span> <span class="kn">import</span> <span class="n">DiagsCase</span>
+<span class="kn">from</span> <span class="nn">mom6_tools</span> <span class="kn">import</span> <span class="n">m6toolbox</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">ncar_jobqueue</span> <span class="kn">import</span> <span class="n">NCARCluster</span>
+<span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
+<span class="kn">import</span> <span class="nn">yaml</span><span class="o">,</span> <span class="nn">intake</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">Latex</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Basemap module not found. Some regional plots may not function properly
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read in the yaml file</span>
+<span class="n">diag_config_yml_path</span> <span class="o">=</span> <span class="s2">&quot;diag_config.yml&quot;</span>
+<span class="n">diag_config_yml</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">diag_config_yml_path</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">),</span> <span class="n">Loader</span><span class="o">=</span><span class="n">yaml</span><span class="o">.</span><span class="n">Loader</span><span class="p">)</span>
+
+<span class="c1"># load avg dates</span>
+<span class="n">avg</span> <span class="o">=</span> <span class="n">diag_config_yml</span><span class="p">[</span><span class="s1">&#39;Avg&#39;</span><span class="p">]</span>
+
+<span class="c1"># Create the case instance</span>
+<span class="n">dcase</span> <span class="o">=</span> <span class="n">DiagsCase</span><span class="p">(</span><span class="n">diag_config_yml</span><span class="p">[</span><span class="s1">&#39;Case&#39;</span><span class="p">])</span>
+<span class="n">DOUT_S</span> <span class="o">=</span> <span class="n">dcase</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s1">&#39;DOUT_S&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">DOUT_S</span><span class="p">:</span>
+  <span class="n">OUTDIR</span> <span class="o">=</span> <span class="n">dcase</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s1">&#39;DOUT_S_ROOT&#39;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;/ocn/hist/&#39;</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="n">OUTDIR</span> <span class="o">=</span> <span class="n">dcase</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s1">&#39;RUNDIR&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Output directory is:&#39;</span><span class="p">,</span> <span class="n">OUTDIR</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Casename is:&#39;</span><span class="p">,</span> <span class="n">dcase</span><span class="o">.</span><span class="n">casename</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Output directory is: /glade/scratch/gmarques/archive/g.e23_b15.GJRAv4.TL319_t232_zstar_N65.baseline.001/ocn/hist/
+Casename is: g.e23_b15.GJRAv4.TL319_t232_zstar_N65.baseline.001
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_parameters docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The following parameters must be set accordingly</span>
+<span class="c1">######################################################</span>
+
+<span class="c1"># create an empty class object</span>
+<span class="k">class</span> <span class="nc">args</span><span class="p">:</span>
+  <span class="k">pass</span><span class="c1"># create an empty class object</span>
+<span class="k">class</span> <span class="nc">args</span><span class="p">:</span>
+  <span class="k">pass</span>
+
+<span class="n">args</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">avg</span><span class="p">[</span><span class="s1">&#39;start_date&#39;</span><span class="p">]</span>
+<span class="n">args</span><span class="o">.</span><span class="n">end_date</span> <span class="o">=</span> <span class="n">avg</span><span class="p">[</span><span class="s1">&#39;end_date&#39;</span><span class="p">]</span>
+<span class="n">args</span><span class="o">.</span><span class="n">casename</span> <span class="o">=</span> <span class="n">dcase</span><span class="o">.</span><span class="n">casename</span>
+<span class="n">args</span><span class="o">.</span><span class="n">monthly</span> <span class="o">=</span> <span class="n">dcase</span><span class="o">.</span><span class="n">casename</span><span class="o">+</span><span class="n">diag_config_yml</span><span class="p">[</span><span class="s1">&#39;Fnames&#39;</span><span class="p">][</span><span class="s1">&#39;z&#39;</span><span class="p">]</span>
+<span class="n">args</span><span class="o">.</span><span class="n">static</span> <span class="o">=</span> <span class="n">dcase</span><span class="o">.</span><span class="n">casename</span><span class="o">+</span><span class="n">diag_config_yml</span><span class="p">[</span><span class="s1">&#39;Fnames&#39;</span><span class="p">][</span><span class="s1">&#39;static&#39;</span><span class="p">]</span>
+<span class="n">args</span><span class="o">.</span><span class="n">savefigs</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">args</span><span class="o">.</span><span class="n">nw</span> <span class="o">=</span> <span class="mi">6</span> 
+
+<span class="n">args</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">avg</span><span class="p">[</span><span class="s1">&#39;start_date&#39;</span><span class="p">]</span>
+<span class="n">args</span><span class="o">.</span><span class="n">end_date</span> <span class="o">=</span> <span class="n">avg</span><span class="p">[</span><span class="s1">&#39;end_date&#39;</span><span class="p">]</span>
+<span class="n">args</span><span class="o">.</span><span class="n">casename</span> <span class="o">=</span> <span class="n">dcase</span><span class="o">.</span><span class="n">casename</span>
+<span class="n">args</span><span class="o">.</span><span class="n">monthly</span> <span class="o">=</span> <span class="n">dcase</span><span class="o">.</span><span class="n">casename</span><span class="o">+</span><span class="n">diag_config_yml</span><span class="p">[</span><span class="s1">&#39;Fnames&#39;</span><span class="p">][</span><span class="s1">&#39;z&#39;</span><span class="p">]</span>
+<span class="n">args</span><span class="o">.</span><span class="n">static</span> <span class="o">=</span> <span class="n">dcase</span><span class="o">.</span><span class="n">casename</span><span class="o">+</span><span class="n">diag_config_yml</span><span class="p">[</span><span class="s1">&#39;Fnames&#39;</span><span class="p">][</span><span class="s1">&#39;static&#39;</span><span class="p">]</span>
+<span class="n">args</span><span class="o">.</span><span class="n">savefigs</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">args</span><span class="o">.</span><span class="n">nw</span> <span class="o">=</span> <span class="mi">6</span> <span class="c1"># requesting 6 workers</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_injected-parameters docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parameters</span>
+<span class="n">sname</span> <span class="o">=</span> <span class="s2">&quot;placeholder-sname&quot;</span>
+<span class="n">subset_kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">product</span> <span class="o">=</span> <span class="s2">&quot;/glade/u/home/eromashkova/codes/mom6-tools/docs/source/examples/computed_notebooks/placeholder-sname/velocity_levels.ipynb&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load mom6 grid</span>
+<span class="n">grd</span> <span class="o">=</span> <span class="n">MOM6grid</span><span class="p">(</span><span class="n">OUTDIR</span><span class="o">+</span><span class="n">args</span><span class="o">.</span><span class="n">static</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MOM6 grid successfully loaded... 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parallel</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">nw</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+  <span class="n">parallel</span> <span class="o">=</span> <span class="kc">True</span>
+  <span class="n">cluster</span> <span class="o">=</span> <span class="n">NCARCluster</span><span class="p">()</span>
+  <span class="n">cluster</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">nw</span><span class="p">)</span>
+  <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">cluster</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+    <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;"> </div>
+    <div style="margin-left: 48px;">
+        <h3 style="margin-bottom: 0px;">Client</h3>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-0a29a325-6d30-11ee-bf7b-3cecef1b11e4</p>
+        <table style="width: 100%; text-align: left;">
+
+        <tr>
+        
+            <td style="text-align: left;"><strong>Connection method:</strong> Cluster object</td>
+            <td style="text-align: left;"><strong>Cluster type:</strong> dask_jobqueue.PBSCluster</td>
+        
+        </tr>
+
+        
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Dashboard: </strong> <a href="/proxy/44140/status" target="_blank">/proxy/44140/status</a>
+                </td>
+                <td style="text-align: left;"></td>
+            </tr>
+        
+
+        </table>
+
+        
+            <button style="margin-bottom: 12px;" data-commandlinker-command="dask:populate-and-launch-layout" data-commandlinker-args='{"url": "/proxy/44140/status" }'>
+                Launch dashboard in JupyterLab
+            </button>
+        
+
+        
+            <details>
+            <summary style="margin-bottom: 20px;"><h3 style="display: inline;">Cluster Info</h3></summary>
+            <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-mod-trusted jp-OutputArea-output">
+    <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;">
+    </div>
+    <div style="margin-left: 48px;">
+        <h3 style="margin-bottom: 0px; margin-top: 0px;">PBSCluster</h3>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">9a48f357</p>
+        <table style="width: 100%; text-align: left;">
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Dashboard:</strong> <a href="/proxy/44140/status" target="_blank">/proxy/44140/status</a>
+                </td>
+                <td style="text-align: left;">
+                    <strong>Workers:</strong> 0
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Total threads:</strong> 0
+                </td>
+                <td style="text-align: left;">
+                    <strong>Total memory:</strong> 0 B
+                </td>
+            </tr>
+            
+        </table>
+
+        <details>
+            <summary style="margin-bottom: 20px;">
+                <h3 style="display: inline;">Scheduler Info</h3>
+            </summary>
+
+            <div style="">
+    <div>
+        <div style="width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;"> </div>
+        <div style="margin-left: 48px;">
+            <h3 style="margin-bottom: 0px;">Scheduler</h3>
+            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-a69e2115-868f-4c60-bedc-6f570a2c8f76</p>
+            <table style="width: 100%; text-align: left;">
+                <tr>
+                    <td style="text-align: left;">
+                        <strong>Comm:</strong> tcp://10.12.206.57:35269
+                    </td>
+                    <td style="text-align: left;">
+                        <strong>Workers:</strong> 0
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <strong>Dashboard:</strong> <a href="/proxy/44140/status" target="_blank">/proxy/44140/status</a>
+                    </td>
+                    <td style="text-align: left;">
+                        <strong>Total threads:</strong> 0
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <strong>Started:</strong> Just now
+                    </td>
+                    <td style="text-align: left;">
+                        <strong>Total memory:</strong> 0 B
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <details style="margin-left: 48px;">
+        <summary style="margin-bottom: 20px;">
+            <h3 style="display: inline;">Workers</h3>
+        </summary>
+
+        
+
+    </details>
+</div>
+
+        </details>
+    </div>
+</div>
+            </details>
+        
+
+    </div>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load history files</span>
+
+<span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="n">ds</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39; Return a dataset desired variables&#39;&#39;&#39;</span>
+    <span class="n">variables</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;uo&#39;</span><span class="p">,</span> <span class="s1">&#39;vo&#39;</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;time_bounds&#39;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">ds</span><span class="p">[</span><span class="n">variables</span><span class="p">]</span>
+
+<span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">OUTDIR</span><span class="o">+</span><span class="n">args</span><span class="o">.</span><span class="n">monthly</span><span class="p">,</span> \
+         <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">data_vars</span><span class="o">=</span><span class="s1">&#39;minimal&#39;</span><span class="p">,</span> \
+         <span class="n">coords</span><span class="o">=</span><span class="s1">&#39;minimal&#39;</span><span class="p">,</span> <span class="n">compat</span><span class="o">=</span><span class="s1">&#39;override&#39;</span><span class="p">,</span> <span class="n">preprocess</span><span class="o">=</span><span class="n">preprocess</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select data</span>
+<span class="o">%</span><span class="k">time</span> 
+<span class="n">ds_sel</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">start_date</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">end_date</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 4 µs, sys: 0 ns, total: 4 µs
+Wall time: 6.91 µs
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compute annual mean and then average in time</span>
+<span class="n">ds_ann</span> <span class="o">=</span> <span class="n">m6toolbox</span><span class="o">.</span><span class="n">weighted_temporal_mean_vars</span><span class="p">(</span><span class="n">ds_sel</span><span class="p">)</span>
+<span class="n">uo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_invalid</span><span class="p">(</span><span class="n">ds_ann</span><span class="o">.</span><span class="n">uo</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">vo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_invalid</span><span class="p">(</span><span class="n">ds_ann</span><span class="o">.</span><span class="n">vo</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="zonal-velocity">
+<h2>Zonal velocity<a class="headerlink" href="#zonal-velocity" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="c1"># loop over depths </span>
+<span class="n">km</span> <span class="o">=</span> <span class="n">uo</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">km</span><span class="p">):</span>
+  <span class="c1"># only shallower than 1000.0 m - this can be changed</span>
+  <span class="k">if</span> <span class="n">ds_ann</span><span class="p">[</span><span class="s1">&#39;z_l&#39;</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">&lt;</span> <span class="mf">1000.0</span><span class="p">:</span>
+    <span class="n">xyplot</span><span class="p">(</span><span class="n">uo</span><span class="p">[</span><span class="n">k</span><span class="p">,:],</span><span class="n">grd</span><span class="o">.</span><span class="n">geolon_u</span><span class="p">,</span> <span class="n">grd</span><span class="o">.</span><span class="n">geolat_u</span><span class="p">,</span> <span class="n">area</span><span class="o">=</span><span class="n">grd</span><span class="o">.</span><span class="n">areacello_cu</span><span class="p">,</span>
+          <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Eastward vel., depth = </span><span class="si">{}</span><span class="s1"> m&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ds_ann</span><span class="p">[</span><span class="s1">&#39;z_l&#39;</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)),</span>
+          <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/61f237afcb992d72edc7bb1180ef4e1fa06f45f00cf9b8e6fa524e40b748eb34.png" src="_images/61f237afcb992d72edc7bb1180ef4e1fa06f45f00cf9b8e6fa524e40b748eb34.png" />
+<img alt="_images/00b35e3d40294eae8015c327e565fa206f09e3a100259a3537de0a3aacbf1982.png" src="_images/00b35e3d40294eae8015c327e565fa206f09e3a100259a3537de0a3aacbf1982.png" />
+<img alt="_images/777a4a7997008220faa36fbc6efa8a090c237c92a11fdef2d4dfa6d2877d4d19.png" src="_images/777a4a7997008220faa36fbc6efa8a090c237c92a11fdef2d4dfa6d2877d4d19.png" />
+<img alt="_images/37dbcaa4a508da6b8b094ba6b7f30b989460acaf1f912e94e070adae0b992e76.png" src="_images/37dbcaa4a508da6b8b094ba6b7f30b989460acaf1f912e94e070adae0b992e76.png" />
+<img alt="_images/f6f18be86f9919674eb9bec3b91b7943aa4588815b9ed200e57d89787c55e0c8.png" src="_images/f6f18be86f9919674eb9bec3b91b7943aa4588815b9ed200e57d89787c55e0c8.png" />
+<img alt="_images/6b54fcb98f90bd0568251a74a9e3911fb70467551288e5d360e5f8b9598795d2.png" src="_images/6b54fcb98f90bd0568251a74a9e3911fb70467551288e5d360e5f8b9598795d2.png" />
+<img alt="_images/bdb911a32307594317e37d20596d363d95c42041a5d2dd047dcf74e8f8d96786.png" src="_images/bdb911a32307594317e37d20596d363d95c42041a5d2dd047dcf74e8f8d96786.png" />
+<img alt="_images/de63d5ad47ee8e347238d3cec9bbf60ddf3ff1cc9d0760f8d79a79d8c1c7ba9f.png" src="_images/de63d5ad47ee8e347238d3cec9bbf60ddf3ff1cc9d0760f8d79a79d8c1c7ba9f.png" />
+<img alt="_images/8108e775a4a1894e7f21f9b6087d3263260fb2f538ce3fb2653684460ccc3cdb.png" src="_images/8108e775a4a1894e7f21f9b6087d3263260fb2f538ce3fb2653684460ccc3cdb.png" />
+<img alt="_images/382fbdc85b49666f331e4ac029e3da3509fae6ec2f7d62c92bdf5e848bcee07e.png" src="_images/382fbdc85b49666f331e4ac029e3da3509fae6ec2f7d62c92bdf5e848bcee07e.png" />
+<img alt="_images/c341709cf4de53f5dc96eb1be78044e061413e281b9d0a61a9545a2f7f2a4a1e.png" src="_images/c341709cf4de53f5dc96eb1be78044e061413e281b9d0a61a9545a2f7f2a4a1e.png" />
+<img alt="_images/8ad97de025c5d95e08b39cbe4dd5996d934b74c1de79dbd4261f4545a4cd436f.png" src="_images/8ad97de025c5d95e08b39cbe4dd5996d934b74c1de79dbd4261f4545a4cd436f.png" />
+<img alt="_images/6f0a708204f92ba1d6e7313e8bd3fee2da190f463e02dea1a951935b8efc2462.png" src="_images/6f0a708204f92ba1d6e7313e8bd3fee2da190f463e02dea1a951935b8efc2462.png" />
+<img alt="_images/2e1d128dadb2e7487f3579918749e06f652538f204b704cc2bf1a61f8532a340.png" src="_images/2e1d128dadb2e7487f3579918749e06f652538f204b704cc2bf1a61f8532a340.png" />
+<img alt="_images/8d6ca0f6a450aeb80647e2f3f3c43e0db3e666c5b517fb75ae0e30edbf14946e.png" src="_images/8d6ca0f6a450aeb80647e2f3f3c43e0db3e666c5b517fb75ae0e30edbf14946e.png" />
+<img alt="_images/a2562d7d353f124c1c180d32aac0c9c4f6979a548ec239edf2d7d8736be9c71f.png" src="_images/a2562d7d353f124c1c180d32aac0c9c4f6979a548ec239edf2d7d8736be9c71f.png" />
+<img alt="_images/9b131c0b475a83c37330afff603cd3967a51c8d2a598e4c0e0bce339ed0e0d63.png" src="_images/9b131c0b475a83c37330afff603cd3967a51c8d2a598e4c0e0bce339ed0e0d63.png" />
+<img alt="_images/b31a11a0bf0aeeb962105a86da9dae8ccb09b8cc9c84acbf106580fe574f99f6.png" src="_images/b31a11a0bf0aeeb962105a86da9dae8ccb09b8cc9c84acbf106580fe574f99f6.png" />
+</div>
+</div>
+</section>
+<section id="meridional-velocity">
+<h2>Meridional velocity<a class="headerlink" href="#meridional-velocity" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># loop over depths </span>
+<span class="n">km</span> <span class="o">=</span> <span class="n">vo</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">km</span><span class="p">):</span>
+  <span class="c1"># only shallower than 1000.0 m - this can be changed</span>
+  <span class="k">if</span> <span class="n">ds_ann</span><span class="p">[</span><span class="s1">&#39;z_l&#39;</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">&lt;</span> <span class="mf">1000.0</span><span class="p">:</span>
+    <span class="n">xyplot</span><span class="p">(</span><span class="n">vo</span><span class="p">[</span><span class="n">k</span><span class="p">,:],</span><span class="n">grd</span><span class="o">.</span><span class="n">geolon_v</span><span class="p">,</span> <span class="n">grd</span><span class="o">.</span><span class="n">geolat_v</span><span class="p">,</span> <span class="n">area</span><span class="o">=</span><span class="n">grd</span><span class="o">.</span><span class="n">areacello_cv</span><span class="p">,</span>
+          <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Northward vel., depth = </span><span class="si">{}</span><span class="s1"> m&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ds_ann</span><span class="p">[</span><span class="s1">&#39;z_l&#39;</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)),</span>
+          <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span><span class="n">show</span><span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b02c656ecc2692b66ae47b9d1c24bacbcee8e2d7f1c98d60d4d5788fd70bb31f.png" src="_images/b02c656ecc2692b66ae47b9d1c24bacbcee8e2d7f1c98d60d4d5788fd70bb31f.png" />
+<img alt="_images/7cbb32d762264805532c32b30bba37034dce60b13357d0311906c7684267352a.png" src="_images/7cbb32d762264805532c32b30bba37034dce60b13357d0311906c7684267352a.png" />
+<img alt="_images/9b5f169963a47262c61ab9f4aefbb6b05950007405c34824931dbf694c5dcf16.png" src="_images/9b5f169963a47262c61ab9f4aefbb6b05950007405c34824931dbf694c5dcf16.png" />
+<img alt="_images/cb70257f1a26e2e3b00f497f96e6ecc1182458bad8c0920600d2b8742ee2079a.png" src="_images/cb70257f1a26e2e3b00f497f96e6ecc1182458bad8c0920600d2b8742ee2079a.png" />
+<img alt="_images/f6e01500c94b82e3f9ddcf4bdba0ad7539d6dc087191a0077f66f1f384d28b2c.png" src="_images/f6e01500c94b82e3f9ddcf4bdba0ad7539d6dc087191a0077f66f1f384d28b2c.png" />
+<img alt="_images/f16d2bbc9aaf78e1ce30e9e3ddcaa4a807d553820bf55dd9ebfeb0e72f83b4e6.png" src="_images/f16d2bbc9aaf78e1ce30e9e3ddcaa4a807d553820bf55dd9ebfeb0e72f83b4e6.png" />
+<img alt="_images/2263325c209f7f4d408542b4176f2464d65df9f68de46f9d700173834aa31cf9.png" src="_images/2263325c209f7f4d408542b4176f2464d65df9f68de46f9d700173834aa31cf9.png" />
+<img alt="_images/035861dcab06aa36bf5d82e1f7d94a023551f6f7e28fcceeedb58f5863755cdc.png" src="_images/035861dcab06aa36bf5d82e1f7d94a023551f6f7e28fcceeedb58f5863755cdc.png" />
+<img alt="_images/03e5dcdfa76c41e113753e0a074a5ec7558a454dc287be2e713a12582ab2e4a0.png" src="_images/03e5dcdfa76c41e113753e0a074a5ec7558a454dc287be2e713a12582ab2e4a0.png" />
+<img alt="_images/e4fde421c16b786a035bb3f8319d5d028892c853dd2fe3f224bcc0ef35a7f2c9.png" src="_images/e4fde421c16b786a035bb3f8319d5d028892c853dd2fe3f224bcc0ef35a7f2c9.png" />
+<img alt="_images/1cd4fa7f5da9795d155545a82eca7080142c24357fb691331d412d863e5d1701.png" src="_images/1cd4fa7f5da9795d155545a82eca7080142c24357fb691331d412d863e5d1701.png" />
+<img alt="_images/74d753b098b37c07579ea576d920f57ef44b951e332d946596e8006382b3e7d7.png" src="_images/74d753b098b37c07579ea576d920f57ef44b951e332d946596e8006382b3e7d7.png" />
+<img alt="_images/813e694badf81237344a7545043e7e162dbbb46413e0649c4090f614d7648082.png" src="_images/813e694badf81237344a7545043e7e162dbbb46413e0649c4090f614d7648082.png" />
+<img alt="_images/951e39e91e0657fe9032de80d25f77bd991085f24b2c440be12df743b4c1ac0f.png" src="_images/951e39e91e0657fe9032de80d25f77bd991085f24b2c440be12df743b4c1ac0f.png" />
+<img alt="_images/b3c3d1cacdf340ede27fbe7278c4e36ec0a538d2fa0730e41bf5f7ca4aa1fa19.png" src="_images/b3c3d1cacdf340ede27fbe7278c4e36ec0a538d2fa0730e41bf5f7ca4aa1fa19.png" />
+<img alt="_images/6883265d93b545ff7fa6001b2cddcc8af9003b58f5a95e0cd8a7950e08f3e159.png" src="_images/6883265d93b545ff7fa6001b2cddcc8af9003b58f5a95e0cd8a7950e08f3e159.png" />
+<img alt="_images/42c786bab11999b1877ad08c76ccc8ab6b6ac80f0b9478ee46b0f6341189348b.png" src="_images/42c786bab11999b1877ad08c76ccc8ab6b6ac80f0b9478ee46b0f6341189348b.png" />
+<img alt="_images/d9ff72d1843958ad7187ec5ac7abe593964f7b4f95beeab24929cab798f8620a.png" src="_images/d9ff72d1843958ad7187ec5ac7abe593964f7b4f95beeab24929cab798f8620a.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "mom6-diagnostics"
+        },
+        kernelOptions: {
+            name: "mom6-diagnostics",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'mom6-diagnostics'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="meridional_overturning.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Meridional Overturning</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zonal-velocity">Zonal velocity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#meridional-velocity">Meridional velocity</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By none
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,181 @@
+Notebook Equatorial_comparison.ipynb is missing the parameters cell, adding it at the top of the file...
+Equatorial_comparison
+meridional_overturning
+ocean_stats
+/glade/work/eromashkova/miniconda3/envs/nbscuid-dev/lib/python3.11/site-packages/ploomber/static_analysis/pyflakes.py:131: UserWarnin
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████| 9/9 [00:57<00:00,  6.38s/it]
+Traceback (most recent call last):
+  File "/glade/work/eromashkova/miniconda3/envs/nbscuid-dev/bin/nbscuid-run", line 8, in <module>
+    sys.exit(run())
+             ^^^^^
+  File "/glade/u/home/eromashkova/codes/nbscuid/nbscuid/run.py", line 119, in run
+    dag.build()
+  File "/glade/work/eromashkova/miniconda3/envs/nbscuid-dev/lib/python3.11/site-packages/ploomber/dag/dag.py", line 557, in build
+    report = callable_()
+             ^^^^^^^^^^^
+  File "/glade/work/eromashkova/miniconda3/envs/nbscuid-dev/lib/python3.11/site-packages/ploomber/dag/dag.py", line 662, in _build
+    raise build_exception
+  File "/glade/work/eromashkova/miniconda3/envs/nbscuid-dev/lib/python3.11/site-packages/ploomber/dag/dag.py", line 591, in _build
+    task_reports = self._executor(dag=self, show_progress=show_progress)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/glade/work/eromashkova/miniconda3/envs/nbscuid-dev/lib/python3.11/site-packages/ploomber/executors/parallel.py", line 321, in __call__
+    raise DAGBuildError(str(BuildExceptionsCollector(exps)))
+ploomber.exceptions.DAGBuildError: 
+========================================================= DAG build failed ==========================================================
+---------------------- NotebookRunner: Equatorial_comparison -> File('computed_notebook...l_comparison.ipynb') ----------------------
+-------------------- /glade/u/home/eromashkova/codes/mom6-tools/docs/source/examples/Equatorial_comparison.ipynb --------------------
+An error happened when checking the source code. 
+:89:48: undefined name 'ds_sel'
+
+(if you want to disable this check, set static_analysis to "disable" in the task declaration)
+ploomber.exceptions.TaskBuildError: Error building task "Equatorial_comparison"
+--------------------- NotebookRunner: meridional_overturning -> File('computed_notebook..._overturning.ipynb') ----------------------
+------------------- /glade/u/home/eromashkova/codes/mom6-tools/docs/source/examples/meridional_overturning.ipynb --------------------
+Traceback (most recent call last):
+  File "/glade/work/eromashkova/miniconda3/envs/nbscuid-dev/lib/python3.11/site-packages/ploomber/tasks/abc.py", line 559, in _build
+    res = self._run()
+          ^^^^^^^^^^^
+  File "/glade/work/eromashkova/miniconda3/envs/nbscuid-dev/lib/python3.11/site-packages/ploomber/tasks/abc.py", line 671, in _run
+    self.run()
+  File "/glade/work/eromashkova/miniconda3/envs/nbscuid-dev/lib/python3.11/site-packages/ploomber/tasks/notebook.py", line 718, in run
+    self.source._check_notebook(raise_=True, check_signature=False)
+  File "/glade/work/eromashkova/miniconda3/envs/nbscuid-dev/lib/python3.11/site-packages/ploomber/sources/notebooksource.py", line 459, in _check_notebook
+    check_notebook(
+  File "/glade/work/eromashkova/miniconda3/envs/nbscuid-dev/lib/python3.11/site-packages/ploomber/static_analysis/pyflakes.py", line 173, in check_notebook
+    check_source(nb, raise_=raise_)
+  File "/glade/work/eromashkova/miniconda3/envs/nbscuid-dev/lib/python3.11/site-packages/ploomber/static_analysis/pyflakes.py", line 199, in check_source
+    reporter._check(raise_)
+  File "/glade/work/eromashkova/miniconda3/envs/nbscuid-dev/lib/python3.11/site-packages/ploomber/static_analysis/pyflakes.py", line 118, in _check
+    raise SyntaxError(msg)
+SyntaxError: An error happened when checking the source code. 
+:78:29: unexpected indent
+
+                             combine="nested", concat_dim="time", \
+
+                            ^
+
+
+(if you want to disable this check, set static_analysis to "disable" in the task declaration)
+
+ploomber.exceptions.TaskBuildError: Error building task "meridional_overturning"
+--------------------------- NotebookRunner: ocean_stats -> File('computed_notebook.../ocean_stats.ipynb') ---------------------------
+------------------------- /glade/u/home/eromashkova/codes/mom6-tools/docs/source/examples/ocean_stats.ipynb -------------------------
+---------------------------------------------------------------------------
+Exception encountered at "In [10]":
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+Cell In[10], line 8
+      6 native = dcase.casename+diag_config_yml['Fnames']['native']
+      7 variables = ['thetaoga','soga']
+----> 8 extract_time_series(native, variables, dcase, args, OUTDIR)
+
+TypeError: extract_time_series() missing 1 required positional argument: 'OUTDIR'
+
+ploomber.exceptions.TaskBuildError: Error when executing task 'ocean_stats'. Partially executed notebook available at /glade/u/home/eromashkova/codes/mom6-tools/docs/source/examples/computed_notebooks/placeholder-sname/ocean_stats.ipynb
+ploomber.exceptions.TaskBuildError: Error building task "ocean_stats"
+--------------------- NotebookRunner: poleward_heat_transport -> File('computed_notebook...at_transport.ipynb') ---------------------
+------------------- /glade/u/home/eromashkova/codes/mom6-tools/docs/source/examples/poleward_heat_transport.ipynb -------------------
+Traceback (most recent call last):
+  File "/glade/work/eromashkova/miniconda3/envs/nbscuid-dev/lib/python3.11/site-packages/ploomber/tasks/abc.py", line 559, in _build
+    res = self._run()
+          ^^^^^^^^^^^
+  File "/glade/work/eromashkova/miniconda3/envs/nbscuid-dev/lib/python3.11/site-packages/ploomber/tasks/abc.py", line 671, in _run
+    self.run()
+  File "/glade/work/eromashkova/miniconda3/envs/nbscuid-dev/lib/python3.11/site-packages/ploomber/tasks/notebook.py", line 718, in run
+    self.source._check_notebook(raise_=True, check_signature=False)
+  File "/glade/work/eromashkova/miniconda3/envs/nbscuid-dev/lib/python3.11/site-packages/ploomber/sources/notebooksource.py", line 459, in _check_notebook
+    check_notebook(
+  File "/glade/work/eromashkova/miniconda3/envs/nbscuid-dev/lib/python3.11/site-packages/ploomber/static_analysis/pyflakes.py", line 173, in check_notebook
+    check_source(nb, raise_=raise_)
+  File "/glade/work/eromashkova/miniconda3/envs/nbscuid-dev/lib/python3.11/site-packages/ploomber/static_analysis/pyflakes.py", line 199, in check_source
+    reporter._check(raise_)
+  File "/glade/work/eromashkova/miniconda3/envs/nbscuid-dev/lib/python3.11/site-packages/ploomber/static_analysis/pyflakes.py", line 118, in _check
+    raise SyntaxError(msg)
+SyntaxError: An error happened when checking the source code. 
+:81:9: unexpected indent
+
+         parallel=True, data_vars='minimal', chunks={'time': 12},\
+
+        ^
+
+
+(if you want to disable this check, set static_analysis to "disable" in the task declaration)
+
+ploomber.exceptions.TaskBuildError: Error building task "poleward_heat_transport"
+----------------------- NotebookRunner: section_transports -> File('computed_notebook...n_transports.ipynb') ------------------------
+--------------------- /glade/u/home/eromashkova/codes/mom6-tools/docs/source/examples/section_transports.ipynb ----------------------
+---------------------------------------------------------------------------
+Exception encountered at "In [10]":
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+Cell In[10], line 3
+      1 get_ipython().run_line_magic('matplotlib', 'inline')
+      2 ds = []
+----> 3 agulhas = Transport(args,sections,'h.Agulhas_Section',debug=False); ds.append(agulhas)
+      4 plotPanel(agulhas, observedFlows=sections)
+
+File /glade/work/eromashkova/miniconda3/envs/mom6-diagnostics/lib/python3.11/site-packages/mom6_tools/section_transports.py:34, in Transport.__init__(self, args, section, var, label, ylim, zlim, mks2Sv, debug)
+     31 if debug: print('Processing ', section)
+     33 # List all section* files in args.infile
+---> 34 full_path = args.infile+args.case_name+'.mom6.'+section+'*'
+     35 if debug: print('Full path ', full_path)
+     36 files = [f for f in glob.glob(full_path)]
+
+TypeError: can only concatenate str (not "dict") to str
+
+ploomber.exceptions.TaskBuildError: Error when executing task 'section_transports'. Partially executed notebook available at /glade/u/home/eromashkova/codes/mom6-tools/docs/source/examples/computed_notebooks/placeholder-sname/section_transports.ipynb
+ploomber.exceptions.TaskBuildError: Error building task "section_transports"
+----------------------------- NotebookRunner: surface -> File('computed_notebook...name/surface.ipynb') -----------------------------
+--------------------------- /glade/u/home/eromashkova/codes/mom6-tools/docs/source/examples/surface.ipynb ---------------------------
+---------------------------------------------------------------------------
+Exception encountered at "In [2]":
+---------------------------------------------------------------------------
+ModuleNotFoundError                       Traceback (most recent call last)
+Cell In[2], line 6
+      4 import warnings, os, yaml, argparse
+      5 import pandas as pd
+----> 6 import dask, intake
+      7 from datetime import datetime, date
+      8 from ncar_jobqueue import NCARCluster
+
+ModuleNotFoundError: No module named 'intake'
+
+ploomber.exceptions.TaskBuildError: Error when executing task 'surface'. Partially executed notebook available at /glade/u/home/eromashkova/codes/mom6-tools/docs/source/examples/computed_notebooks/placeholder-sname/surface.ipynb
+ploomber.exceptions.TaskBuildError: Error building task "surface"
+---------------------------- NotebookRunner: TS_drift -> File('computed_notebook...ame/TS_drift.ipynb') -----------------------------
+-------------------------- /glade/u/home/eromashkova/codes/mom6-tools/docs/source/examples/TS_drift.ipynb ---------------------------
+An error happened when checking the source code. 
+:173:12: undefined name 'temp_rms'
+:175:16: undefined name 'temp_rms'
+:187:12: undefined name 'salt_rms'
+:189:16: undefined name 'salt_rms'
+
+(if you want to disable this check, set static_analysis to "disable" in the task declaration)
+ploomber.exceptions.TaskBuildError: Error building task "TS_drift"
+---------------------------- NotebookRunner: TS_levels -> File('computed_notebook...me/TS_levels.ipynb') ----------------------------
+-------------------------- /glade/u/home/eromashkova/codes/mom6-tools/docs/source/examples/TS_levels.ipynb --------------------------
+An error happened when checking the source code. 
+:75:48: undefined name 'ds_sel'
+
+(if you want to disable this check, set static_analysis to "disable" in the task declaration)
+ploomber.exceptions.TaskBuildError: Error building task "TS_levels"
+------------------------- NotebookRunner: velocity_levels -> File('computed_notebook...ocity_levels.ipynb') -------------------------
+----------------------- /glade/u/home/eromashkova/codes/mom6-tools/docs/source/examples/velocity_levels.ipynb -----------------------
+An error happened when checking the source code. 
+:82:48: undefined name 'ds_sel'
+
+(if you want to disable this check, set static_analysis to "disable" in the task declaration)
+ploomber.exceptions.TaskBuildError: Error building task "velocity_levels"
+========================================================= Summary (9 tasks) =========================================================
+NotebookRunner: Equatorial_comparison -> File('computed_notebook...l_comparison.ipynb')
+NotebookRunner: meridional_overturning -> File('computed_notebook..._overturning.ipynb')
+NotebookRunner: ocean_stats -> File('computed_notebook.../ocean_stats.ipynb')
+NotebookRunner: poleward_heat_transport -> File('computed_notebook...at_transport.ipynb')
+NotebookRunner: section_transports -> File('computed_notebook...n_transports.ipynb')
+NotebookRunner: surface -> File('computed_notebook...name/surface.ipynb')
+NotebookRunner: TS_drift -> File('computed_notebook...ame/TS_drift.ipynb')
+NotebookRunner: TS_levels -> File('computed_notebook...me/TS_levels.ipynb')
+NotebookRunner: velocity_levels -> File('computed_notebook...ocity_levels.ipynb')
+========================================================= DAG build failed ==========================================================
+
+Need help? https://ploomber.io/community

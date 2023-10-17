@@ -1,0 +1,924 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Transport across sections &#8212; mom6_solutions automation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'section_transports';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Analysis of Surface Fields" href="surface.html" />
+    <link rel="prev" title="Poleward Heat Transport" href="poleward_heat_transport.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">mom6_solutions automation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">mom6-tools example notebooks</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Equatorial_comparison.html">Equatorial Upperocean model vs. obs comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ocean_stats.html">Ocean Stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="poleward_heat_transport.html">Poleward Heat Transport</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Transport across sections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="surface.html">Analysis of Surface Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TS_drift.html">Horizontal Mean difference and RMS: model versus observations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TS_levels.html">Temperature and Salinity at Depth Levels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meridional_overturning.html">Meridional Overturning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="velocity_levels.html">Velocity at Depth Levels</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://jupyterhub.hpc.ucar.edu/hub/user-redirect/git-pull?repo=https%3A//github.com/rmshkv/nbscuid&urlpath=lab/tree/nbscuid/notebooks/section_transports.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onJupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/section_transports.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Transport across sections</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agulhas-section">Agulhas Section</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bering-strait">Bering Strait</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#barents-opening">Barents opening</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#davis-strait">Davis Strait</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#denmark-strait">Denmark Strait</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drake-passage">Drake Passage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#english-channel">English Channel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fram-strait">Fram Strait</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#florida-bahamas">Florida Bahamas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#florida-bahamas-extended">Florida Bahamas extended</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#florida-cuba">Florida Cuba</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gibraltar-strait">Gibraltar Strait</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iceland-norway">Iceland Norway</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indonesian-throughflow">Indonesian Throughflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mozambique-channel">Mozambique Channel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pacific-undercurrent">Pacific undercurrent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#taiwan-luzon">Taiwan Luzon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windward-passage">Windward Passage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robeson-channel">Robeson_Channel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yucatan-channel">Yucatan_Channel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bosporus-strait">Bosporus_Strait</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-netcdf">Save netcdf</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p><span style="color:red; font-family:Helvetica Neue, Helvetica, Arial, sans-serif; font-size:2em;">An Exception was encountered at ‘<a href="#papermill-error-cell">In [10]</a>’.</span></p>
+<section class="tex2jax_ignore mathjax_ignore" id="transport-across-sections">
+<h1>Transport across sections<a class="headerlink" href="#transport-across-sections" title="Permalink to this heading">#</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">mom6_tools.section_transports</span></code> collection of functions for computing and plotting time-series of transports across pre-defined vertical sections.</p>
+<p>The goal of this notebook is the following:</p>
+<ol class="arabic simple">
+<li><p>server as an example on how to post-process the CESM/MOM6 vertical sections defined in diag_table. The location of the current vertical sections computed online can be found at the end of <a class="reference external" href="https://gist.github.com/gustavo-marques/bd6e9bb43062dcbc2abda91b757c7c4b">this notebook</a>;</p></li>
+<li><p>evaluate model experiments by comparing transports against observed estimates;</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">mom6_tools.section_transports</span> <span class="kn">import</span> <span class="n">Transport</span><span class="p">,</span> <span class="n">options</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">mom6_tools.DiagsCase</span> <span class="kn">import</span> <span class="n">DiagsCase</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">yaml</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">numpy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read in the yaml file</span>
+<span class="n">diag_config_yml_path</span> <span class="o">=</span> <span class="s2">&quot;diag_config.yml&quot;</span>
+<span class="n">diag_config_yml</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">diag_config_yml_path</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">),</span> <span class="n">Loader</span><span class="o">=</span><span class="n">yaml</span><span class="o">.</span><span class="n">Loader</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the case instance</span>
+<span class="n">dcase</span> <span class="o">=</span> <span class="n">DiagsCase</span><span class="p">(</span><span class="n">diag_config_yml</span><span class="p">[</span><span class="s1">&#39;Case&#39;</span><span class="p">])</span>
+<span class="n">DOUT_S</span> <span class="o">=</span> <span class="n">dcase</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s1">&#39;DOUT_S&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">DOUT_S</span><span class="p">:</span>
+  <span class="n">OUTDIR</span> <span class="o">=</span> <span class="n">dcase</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s1">&#39;DOUT_S_ROOT&#39;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;/ocn/hist/&#39;</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="n">OUTDIR</span> <span class="o">=</span> <span class="n">dcase</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s1">&#39;RUNDIR&#39;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;/&#39;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Output directory is:&#39;</span><span class="p">,</span> <span class="n">OUTDIR</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Casename is:&#39;</span><span class="p">,</span> <span class="n">dcase</span><span class="o">.</span><span class="n">casename</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Output directory is: /glade/scratch/gmarques/archive/g.e23_b15.GJRAv4.TL319_t232_zstar_N65.baseline.001/ocn/hist/
+Casename is: g.e23_b15.GJRAv4.TL319_t232_zstar_N65.baseline.001
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load sections where transports are computed online</span>
+<span class="n">sections</span> <span class="o">=</span> <span class="n">diag_config_yml</span><span class="p">[</span><span class="s1">&#39;Transports&#39;</span><span class="p">][</span><span class="s1">&#39;sections&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create an empty class object</span>
+<span class="k">class</span> <span class="nc">args</span><span class="p">:</span>
+  <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Define the arguments expected by class “Transport”. These have been hard-coded here fow now…</p>
+<div class="cell tag_parameters docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">args</span><span class="o">.</span><span class="n">case_name</span> <span class="o">=</span> <span class="n">dcase</span><span class="o">.</span><span class="n">casename</span>
+<span class="n">args</span><span class="o">.</span><span class="n">infile</span> <span class="o">=</span> <span class="n">OUTDIR</span>
+<span class="c1"># set avg dates</span>
+<span class="n">avg</span> <span class="o">=</span> <span class="n">diag_config_yml</span><span class="p">[</span><span class="s1">&#39;Avg&#39;</span><span class="p">]</span>
+<span class="n">args</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="s1">&#39;0001-01-01&#39;</span> <span class="c1"># override start date</span>
+<span class="n">args</span><span class="o">.</span><span class="n">end_date</span> <span class="o">=</span> <span class="n">avg</span><span class="p">[</span><span class="s1">&#39;end_date&#39;</span><span class="p">]</span>
+<span class="n">args</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="n">args</span><span class="o">.</span><span class="n">debug</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_injected-parameters docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parameters</span>
+<span class="n">sname</span> <span class="o">=</span> <span class="s2">&quot;placeholder-sname&quot;</span>
+<span class="n">subset_kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">product</span> <span class="o">=</span> <span class="s2">&quot;/glade/u/home/eromashkova/codes/mom6-tools/docs/source/examples/computed_notebooks/placeholder-sname/section_transports.ipynb&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Observed flows, more options can be added here</p>
+<ul class="simple">
+<li><p>Griffies et al., 2016: OMIP contribution to CMIP6: experimental and diagnostic protocol for the physical component of the Ocean Model Intercomparison Project. Geosci. Model. Dev., 9, 3231-3296. doi:10.5194/gmd-9-3231-2016</p></li>
+</ul>
+<p>Below we define a function for plotting transport time series. Note the following:</p>
+<p><span style="color:green">green = mean transport is within observed values</span></p>
+<p><span style="color:red">red    = mean transport is not within observed values</span></p>
+<p><span style="color:gray">gray  = either there isn’t observed values to compare with or just a mean value is available (not a range)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plotPanel</span><span class="p">(</span><span class="n">section</span><span class="p">,</span><span class="n">observedFlows</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">colorCode</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;#c3c3c3&#39;</span><span class="p">;</span> <span class="n">obsLabel</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">section</span><span class="o">.</span><span class="n">label</span> <span class="ow">in</span> <span class="n">observedFlows</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">observedFlows</span><span class="p">[</span><span class="n">section</span><span class="o">.</span><span class="n">label</span><span class="p">][</span><span class="mi">1</span><span class="p">:],</span><span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">observedFlows</span><span class="p">[</span><span class="n">section</span><span class="o">.</span><span class="n">label</span><span class="p">][</span><span class="mi">1</span><span class="p">:][</span><span class="mi">0</span><span class="p">],</span><span class="nb">float</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">colorCode</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+          <span class="k">if</span> <span class="nb">min</span><span class="p">(</span><span class="n">observedFlows</span><span class="p">[</span><span class="n">section</span><span class="o">.</span><span class="n">label</span><span class="p">][</span><span class="mi">1</span><span class="p">:])</span> <span class="o">&lt;=</span> <span class="n">section</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="nb">max</span><span class="p">(</span><span class="n">observedFlows</span><span class="p">[</span><span class="n">section</span><span class="o">.</span><span class="n">label</span><span class="p">][</span><span class="mi">1</span><span class="p">:]):</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;#90ee90&#39;</span>
+          <span class="k">else</span><span class="p">:</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;#f26161&#39;</span><span class="p">;</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;here3&#39;</span><span class="p">)</span>
+        <span class="n">obsLabel</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">observedFlows</span><span class="p">[</span><span class="n">section</span><span class="o">.</span><span class="n">label</span><span class="p">][</span><span class="mi">1</span><span class="p">:]))</span> <span class="o">+</span> <span class="s1">&#39; to &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">observedFlows</span><span class="p">[</span><span class="n">section</span><span class="o">.</span><span class="n">label</span><span class="p">][</span><span class="mi">1</span><span class="p">:]))</span>
+      <span class="k">else</span><span class="p">:</span> <span class="n">obsLabel</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">observedFlows</span><span class="p">[</span><span class="n">section</span><span class="o">.</span><span class="n">label</span><span class="p">][</span><span class="mi">1</span><span class="p">:]);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;here4&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">section</span><span class="o">.</span><span class="n">time</span><span class="p">,</span><span class="n">section</span><span class="o">.</span><span class="n">data</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">section</span><span class="o">.</span><span class="n">label</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.04</span><span class="p">,</span><span class="mf">0.11</span><span class="p">,</span><span class="s1">&#39;Mean = &#39;</span><span class="o">+</span><span class="s1">&#39;</span><span class="si">{0:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">section</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">()),</span><span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">obsLabel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.04</span><span class="p">,</span><span class="mf">0.04</span><span class="p">,</span><span class="s1">&#39;Obs. = &#39;</span><span class="o">+</span><span class="n">obsLabel</span><span class="p">,</span><span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">section</span><span class="o">.</span><span class="n">ylim</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">section</span><span class="o">.</span><span class="n">ylim</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Transport (Sv)&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time since beginning of run (yr)&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="k">return</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot section transports in alphabetical order</p>
+<section id="agulhas-section">
+<h2>Agulhas Section<a class="headerlink" href="#agulhas-section" title="Permalink to this heading">#</a></h2>
+<p><span id="papermill-error-cell" style="color:red; font-family:Helvetica Neue, Helvetica, Arial, sans-serif; font-size:2em;">Execution using papermill encountered an exception here and stopped:</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">ds</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">agulhas</span> <span class="o">=</span> <span class="n">Transport</span><span class="p">(</span><span class="n">args</span><span class="p">,</span><span class="n">sections</span><span class="p">,</span><span class="s1">&#39;h.Agulhas_Section&#39;</span><span class="p">,</span><span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> <span class="n">ds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">agulhas</span><span class="p">)</span>
+<span class="n">plotPanel</span><span class="p">(</span><span class="n">agulhas</span><span class="p">,</span> <span class="n">observedFlows</span><span class="o">=</span><span class="n">sections</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;matplotlib&#39;</span><span class="p">,</span> <span class="s1">&#39;inline&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ds</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">agulhas</span> <span class="o">=</span> <span class="n">Transport</span><span class="p">(</span><span class="n">args</span><span class="p">,</span><span class="n">sections</span><span class="p">,</span><span class="s1">&#39;h.Agulhas_Section&#39;</span><span class="p">,</span><span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> <span class="n">ds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">agulhas</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">plotPanel</span><span class="p">(</span><span class="n">agulhas</span><span class="p">,</span> <span class="n">observedFlows</span><span class="o">=</span><span class="n">sections</span><span class="p">)</span>
+
+<span class="nn">File /glade/work/eromashkova/miniconda3/envs/mom6-diagnostics/lib/python3.11/site-packages/mom6_tools/section_transports.py:34,</span> in <span class="ni">Transport.__init__</span><span class="nt">(self, args, section, var, label, ylim, zlim, mks2Sv, debug)</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="k">if</span> <span class="n">debug</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Processing &#39;</span><span class="p">,</span> <span class="n">section</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">33</span> <span class="c1"># List all section* files in args.infile</span>
+<span class="ne">---&gt; </span><span class="mi">34</span> <span class="n">full_path</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">infile</span><span class="o">+</span><span class="n">args</span><span class="o">.</span><span class="n">case_name</span><span class="o">+</span><span class="s1">&#39;.mom6.&#39;</span><span class="o">+</span><span class="n">section</span><span class="o">+</span><span class="s1">&#39;*&#39;</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="k">if</span> <span class="n">debug</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Full path &#39;</span><span class="p">,</span> <span class="n">full_path</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span> <span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">full_path</span><span class="p">)]</span>
+
+<span class="ne">TypeError</span>: can only concatenate str (not &quot;dict&quot;) to str
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bering-strait">
+<h2>Bering Strait<a class="headerlink" href="#bering-strait" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bering</span> <span class="o">=</span> <span class="n">Transport</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">sections</span><span class="p">,</span> <span class="s1">&#39;h.Bering_Strait&#39;</span><span class="p">);</span> <span class="n">ds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bering</span><span class="p">)</span>
+<span class="n">plotPanel</span><span class="p">(</span><span class="n">bering</span><span class="p">,</span> <span class="n">observedFlows</span><span class="o">=</span><span class="n">sections</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="barents-opening">
+<h2>Barents opening<a class="headerlink" href="#barents-opening" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">barents</span> <span class="o">=</span> <span class="n">Transport</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">sections</span><span class="p">,</span> <span class="s1">&#39;h.Barents_Opening&#39;</span><span class="p">);</span> <span class="n">ds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">barents</span><span class="p">)</span>
+<span class="n">plotPanel</span><span class="p">(</span><span class="n">barents</span><span class="p">,</span> <span class="n">observedFlows</span><span class="o">=</span><span class="n">sections</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="davis-strait">
+<h2>Davis Strait<a class="headerlink" href="#davis-strait" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">davis</span> <span class="o">=</span> <span class="n">Transport</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">sections</span><span class="p">,</span><span class="s1">&#39;h.Davis_Strait&#39;</span><span class="p">);</span> <span class="n">ds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">davis</span><span class="p">)</span>
+<span class="n">plotPanel</span><span class="p">(</span><span class="n">davis</span><span class="p">,</span> <span class="n">observedFlows</span><span class="o">=</span><span class="n">sections</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="denmark-strait">
+<h2>Denmark Strait<a class="headerlink" href="#denmark-strait" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">denmark</span> <span class="o">=</span> <span class="n">Transport</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">sections</span><span class="p">,</span><span class="s1">&#39;h.Denmark_Strait&#39;</span><span class="p">);</span> <span class="n">ds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">denmark</span><span class="p">)</span>
+<span class="n">plotPanel</span><span class="p">(</span><span class="n">denmark</span><span class="p">,</span> <span class="n">observedFlows</span><span class="o">=</span><span class="n">sections</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="drake-passage">
+<h2>Drake Passage<a class="headerlink" href="#drake-passage" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">drake</span> <span class="o">=</span> <span class="n">Transport</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">sections</span><span class="p">,</span><span class="s1">&#39;h.Drake_Passage&#39;</span><span class="p">);</span> <span class="n">ds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">drake</span><span class="p">)</span>
+<span class="n">plotPanel</span><span class="p">(</span><span class="n">drake</span><span class="p">,</span> <span class="n">observedFlows</span><span class="o">=</span><span class="n">sections</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="english-channel">
+<h2>English Channel<a class="headerlink" href="#english-channel" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">english</span> <span class="o">=</span> <span class="n">Transport</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">sections</span><span class="p">,</span> <span class="s1">&#39;h.English_Channel&#39;</span><span class="p">);</span> <span class="n">ds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">english</span><span class="p">)</span>
+<span class="n">plotPanel</span><span class="p">(</span><span class="n">english</span><span class="p">,</span> <span class="n">observedFlows</span><span class="o">=</span><span class="n">sections</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="fram-strait">
+<h2>Fram Strait<a class="headerlink" href="#fram-strait" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fram</span> <span class="o">=</span> <span class="n">Transport</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">sections</span><span class="p">,</span> <span class="s1">&#39;h.Fram_Strait&#39;</span><span class="p">);</span> <span class="n">ds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fram</span><span class="p">)</span>
+<span class="n">plotPanel</span><span class="p">(</span><span class="n">fram</span><span class="p">,</span> <span class="n">observedFlows</span><span class="o">=</span><span class="n">sections</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="florida-bahamas">
+<h2>Florida Bahamas<a class="headerlink" href="#florida-bahamas" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#florida1 = Transport(args, sections, &#39;h.Florida_Bahamas&#39;, debug=True); ds.append(florida1)</span>
+<span class="c1">#plotPanel(florida1, observedFlows=sections)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="florida-bahamas-extended">
+<h2>Florida Bahamas extended<a class="headerlink" href="#florida-bahamas-extended" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">florida2</span> <span class="o">=</span> <span class="n">Transport</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">sections</span><span class="p">,</span> <span class="s1">&#39;h.Florida_Bahamas_extended&#39;</span><span class="p">);</span> <span class="n">ds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">florida2</span><span class="p">)</span>
+<span class="n">plotPanel</span><span class="p">(</span><span class="n">florida2</span><span class="p">,</span> <span class="n">observedFlows</span><span class="o">=</span><span class="n">sections</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="florida-cuba">
+<h2>Florida Cuba<a class="headerlink" href="#florida-cuba" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">florida3</span> <span class="o">=</span> <span class="n">Transport</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">sections</span><span class="p">,</span> <span class="s1">&#39;h.Florida_Cuba&#39;</span><span class="p">);</span> <span class="n">ds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">florida3</span><span class="p">)</span>
+<span class="n">plotPanel</span><span class="p">(</span><span class="n">florida3</span><span class="p">,</span> <span class="n">observedFlows</span><span class="o">=</span><span class="n">sections</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="gibraltar-strait">
+<h2>Gibraltar Strait<a class="headerlink" href="#gibraltar-strait" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gibraltar</span> <span class="o">=</span> <span class="n">Transport</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">sections</span><span class="p">,</span> <span class="s1">&#39;h.Gibraltar_Strait&#39;</span><span class="p">);</span> <span class="n">ds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gibraltar</span><span class="p">)</span>
+<span class="n">plotPanel</span><span class="p">(</span><span class="n">gibraltar</span><span class="p">,</span> <span class="n">observedFlows</span><span class="o">=</span><span class="n">sections</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="iceland-norway">
+<h2>Iceland Norway<a class="headerlink" href="#iceland-norway" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iceland</span> <span class="o">=</span> <span class="n">Transport</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">sections</span><span class="p">,</span> <span class="s1">&#39;h.Iceland_Norway&#39;</span><span class="p">);</span> <span class="n">ds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">iceland</span><span class="p">)</span>
+<span class="n">plotPanel</span><span class="p">(</span><span class="n">iceland</span><span class="p">,</span> <span class="n">observedFlows</span><span class="o">=</span><span class="n">sections</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="indonesian-throughflow">
+<h2>Indonesian Throughflow<a class="headerlink" href="#indonesian-throughflow" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">indo</span> <span class="o">=</span> <span class="n">Transport</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">sections</span><span class="p">,</span> <span class="s1">&#39;h.Indonesian_Throughflow&#39;</span><span class="p">);</span> <span class="n">ds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">indo</span><span class="p">)</span>
+<span class="n">plotPanel</span><span class="p">(</span><span class="n">indo</span><span class="p">,</span> <span class="n">observedFlows</span><span class="o">=</span><span class="n">sections</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mozambique-channel">
+<h2>Mozambique Channel<a class="headerlink" href="#mozambique-channel" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mozambique</span> <span class="o">=</span> <span class="n">Transport</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">sections</span><span class="p">,</span> <span class="s1">&#39;h.Mozambique_Channel&#39;</span><span class="p">);</span> <span class="n">ds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mozambique</span><span class="p">)</span>
+<span class="n">plotPanel</span><span class="p">(</span><span class="n">mozambique</span><span class="p">,</span> <span class="n">observedFlows</span><span class="o">=</span><span class="n">sections</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pacific-undercurrent">
+<h2>Pacific undercurrent<a class="headerlink" href="#pacific-undercurrent" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">euc</span> <span class="o">=</span> <span class="n">Transport</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">sections</span><span class="p">,</span> <span class="s1">&#39;h.Pacific_undercurrent&#39;</span><span class="p">);</span> <span class="n">ds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">euc</span><span class="p">)</span>
+<span class="n">plotPanel</span><span class="p">(</span><span class="n">euc</span><span class="p">,</span> <span class="n">observedFlows</span><span class="o">=</span><span class="n">sections</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="taiwan-luzon">
+<h2>Taiwan Luzon<a class="headerlink" href="#taiwan-luzon" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">taiwan</span> <span class="o">=</span> <span class="n">Transport</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">sections</span><span class="p">,</span> <span class="s1">&#39;h.Taiwan_Luzon&#39;</span><span class="p">);</span> <span class="n">ds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">taiwan</span><span class="p">)</span>
+<span class="n">plotPanel</span><span class="p">(</span><span class="n">taiwan</span><span class="p">,</span> <span class="n">observedFlows</span><span class="o">=</span><span class="n">sections</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="windward-passage">
+<h2>Windward Passage<a class="headerlink" href="#windward-passage" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">windward</span> <span class="o">=</span> <span class="n">Transport</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">sections</span><span class="p">,</span> <span class="s1">&#39;h.Windward_Passage&#39;</span><span class="p">);</span> <span class="n">ds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">windward</span><span class="p">)</span>
+<span class="n">plotPanel</span><span class="p">(</span><span class="n">windward</span><span class="p">,</span> <span class="n">observedFlows</span><span class="o">=</span><span class="n">sections</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="robeson-channel">
+<h2>Robeson_Channel<a class="headerlink" href="#robeson-channel" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roberson</span> <span class="o">=</span> <span class="n">Transport</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">sections</span><span class="p">,</span> <span class="s1">&#39;h.Robeson_Channel&#39;</span><span class="p">);</span> <span class="n">ds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">roberson</span><span class="p">)</span>
+<span class="n">plotPanel</span><span class="p">(</span><span class="n">roberson</span><span class="p">,</span> <span class="n">observedFlows</span><span class="o">=</span><span class="n">sections</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="yucatan-channel">
+<h2>Yucatan_Channel<a class="headerlink" href="#yucatan-channel" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yucatan</span> <span class="o">=</span> <span class="n">Transport</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">sections</span><span class="p">,</span> <span class="s1">&#39;h.Yucatan_Channel&#39;</span><span class="p">);</span> <span class="n">ds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">yucatan</span><span class="p">)</span>
+<span class="n">plotPanel</span><span class="p">(</span><span class="n">yucatan</span><span class="p">,</span> <span class="n">observedFlows</span><span class="o">=</span><span class="n">sections</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bosporus-strait">
+<h2>Bosporus_Strait<a class="headerlink" href="#bosporus-strait" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bosporus</span> <span class="o">=</span> <span class="n">Transport</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">sections</span><span class="p">,</span> <span class="s1">&#39;h.Bosporus_Strait&#39;</span><span class="p">);</span> <span class="n">ds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bosporus</span><span class="p">)</span>
+<span class="n">plotPanel</span><span class="p">(</span><span class="n">bosporus</span><span class="p">,</span> <span class="n">observedFlows</span><span class="o">=</span><span class="n">sections</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="save-netcdf">
+<h2>Save netcdf<a class="headerlink" href="#save-netcdf" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Saving netCDF file with transports...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s1">&#39;ncfiles&#39;</span><span class="p">):</span>
+      <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;mkdir -p ncfiles&#39;</span><span class="p">)</span>
+        
+<span class="c1"># create a dataaray</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ds</span><span class="p">)):</span> <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+<span class="n">var</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">ds</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">time</span><span class="p">)))</span>
+<span class="n">ds_out</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">data_vars</span><span class="o">=</span><span class="p">{</span> <span class="s1">&#39;transport&#39;</span> <span class="p">:</span> <span class="p">((</span><span class="s1">&#39;sections&#39;</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">),</span> <span class="n">var</span><span class="p">)},</span>
+                       <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;sections&#39;</span><span class="p">:</span> <span class="n">labels</span><span class="p">,</span>
+                               <span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="n">ds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">time</span><span class="p">})</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ds</span><span class="p">)):</span>
+  <span class="n">ds_out</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">n</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+
+<span class="n">ds_out</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span><span class="s1">&#39;ncfiles/&#39;</span><span class="o">+</span><span class="n">dcase</span><span class="o">.</span><span class="n">casename</span><span class="o">+</span><span class="s1">&#39;_section_transports.nc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "mom6-diagnostics"
+        },
+        kernelOptions: {
+            name: "mom6-diagnostics",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'mom6-diagnostics'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="poleward_heat_transport.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Poleward Heat Transport</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="surface.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Analysis of Surface Fields</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agulhas-section">Agulhas Section</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bering-strait">Bering Strait</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#barents-opening">Barents opening</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#davis-strait">Davis Strait</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#denmark-strait">Denmark Strait</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drake-passage">Drake Passage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#english-channel">English Channel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fram-strait">Fram Strait</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#florida-bahamas">Florida Bahamas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#florida-bahamas-extended">Florida Bahamas extended</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#florida-cuba">Florida Cuba</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gibraltar-strait">Gibraltar Strait</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iceland-norway">Iceland Norway</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indonesian-throughflow">Indonesian Throughflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mozambique-channel">Mozambique Channel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pacific-undercurrent">Pacific undercurrent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#taiwan-luzon">Taiwan Luzon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windward-passage">Windward Passage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robeson-channel">Robeson_Channel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yucatan-channel">Yucatan_Channel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bosporus-strait">Bosporus_Strait</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-netcdf">Save netcdf</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By none
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

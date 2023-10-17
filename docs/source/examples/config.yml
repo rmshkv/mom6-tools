@@ -9,38 +9,150 @@ data_sources:
 ###
 # computation config keys
 computation_config:
-    default_kernel_name: dev2
-    use_cluster: True
+    default_kernel_name: mom6-diagnostics
     account: NCGD0011
+
+
+###
+# computational notebooks
+compute_notebooks:
+  
+  index:
+    parameter_groups:
+      none:
+        sname: *sname
+
+  Equatorial_comparison:
+  ### catalog index error
+    parameter_groups:
+      none:
+        sname: *sname
+        
+  ocean_stats:
+  ### extract_time_series() missing 1 required positional argument: 'OUTDIR'
+  ### update mom6tools
+    parameter_groups:
+      none:
+        sname: *sname
+
+  poleward_heat_transport:
+  ### type error in plot
+    parameter_groups:
+      none:
+        sname: *sname     
+
+  section_transports:
+  ### type error in a concat
+    parameter_groups:
+      none:
+        sname: *sname
+
+  surface:
+  ### Permission denied: '/glade/campaign/cgd/oce/datasets/cesm/tx2_3/mld/deBoyer2004/deBoyer04_MLD_remapped_to_tx2_3.nc'
+  ### cislhelp, cc gustavo
+    parameter_groups:
+      none:
+        sname: *sname
+
+  TS_drift:
+  ### catalog index error
+    parameter_groups:
+      none:
+        sname: *sname
+
+  TS_levels:
+  ### catalog index error
+    parameter_groups:
+      none:
+        sname: *sname  
+
+  meridional_overturning:
+  ### works fully
+    parameter_groups:
+      none:
+        sname: *sname
+
+  velocity_levels:
+  ### works fully
+    parameter_groups:
+      none:
+        sname: *sname
+
+##############################
+
+
+#  EquatorialOceanMetrics:
+#    parameter_groups:
+#      none:
+#        sname: *sname
+
+#  forcing:
+#    parameter_groups:
+#      none:
+#        sname: *sname
+
+#  globally_averaged_ocean_properties:
+#    parameter_groups:
+#      none:
+#        sname: *sname
+
+#  region_masks:
+#    parameter_groups:
+#      none:
+#        sname: *sname
+
+#  seaice:
+#    parameter_groups:
+#      none:
+#        sname: *sname
+
+#  close_tracer_budgets:
+#    parameter_groups:
+#      none:
+#        sname: *sname
+
+#  combining-tiles:
+#    parameter_groups:
+#      none:
+#        sname: *sname
+
+#  diags_case:
+#    parameter_groups:
+#      none:
+#        sname: *sname
+
+
+
 
 
 ###
 # book table of contents
 book_toc:
   format: jb-book
-  root: meridional_overturning
+  root: index
   parts:
     - caption: mom6-tools example notebooks
       chapters:
-        #- file: close_tracer_budgets
- #       - file: combining-tiles
- #       - file: diags_case
+
         - file: Equatorial_comparison
- #       - file: EquatorialOceanMetrics
- #       - file: forcing
- #       - file: globally_averaged_ocean_properties
-        - file: meridional_overturning
         - file: ocean_stats
         - file: poleward_heat_transport
-  #      - file: region_masks
-  #      - file: seaice
         - file: section_transports
         - file: surface
         - file: TS_drift
         - file: TS_levels
+        - file: meridional_overturning       
         - file: velocity_levels
-
-
+    
+###################################################
+        # - file: EquatorialOceanMetrics
+        # - file: forcing
+        # - file: globally_averaged_ocean_properties
+        # - file: region_masks
+        # - file: seaice
+        # - file: close_tracer_budgets
+        # - file: combining-tiles
+        # - file: diags_case
 
 ###
 # book _config.yml keys
@@ -50,115 +162,3 @@ book_config_keys:
     url: https://github.com/rmshkv/nbscuid
     path_to_book: notebooks
     branch: main
-
-
-###
-# computational notebooks
-compute_notebooks:
-
-#  close_tracer_budgets:
-#    use_cluster: True
-#    parameter_groups:
-#      none:
-#        sname: *sname
-
-#  combining-tiles:
-#    use_cluster: True
-#    parameter_groups:
-#      none:
-#        sname: *sname
-
-
-#  diags_case:
-#    use_cluster: True
-#    parameter_groups:
-#      none:
-#        sname: *sname
-
-  Equatorial_comparison:
-    use_cluster: True
-    parameter_groups:
-      none:
-        sname: *sname
-
-#  EquatorialOceanMetrics:
-#    use_cluster: True
-#    parameter_groups:
-#      none:
-#        sname: *sname
-
-#  forcing:
-#    use_cluster: True
-#    parameter_groups:
-#      none:
-#        sname: *sname
-
-#  globally_averaged_ocean_properties:
-#    use_cluster: True
-#    parameter_groups:
-#      none:
-#        sname: *sname
-
-  meridional_overturning:
-    use_cluster: True
-    parameter_groups:
-      none:
-        sname: *sname
-
-  ocean_stats:
-    use_cluster: True
-    parameter_groups:
-      none:
-        sname: *sname
-
-  poleward_heat_transport:
-    use_cluster: True
-    parameter_groups:
-      none:
-        sname: *sname
-
-#  region_masks:
-#    use_cluster: True
-#    parameter_groups:
-#      none:
-#        sname: *sname
-
-#  seaice:
-#    use_cluster: True
-#    parameter_groups:
-#      none:
-#        sname: *sname
-
-  section_transports:
-    use_cluster: True
-    parameter_groups:
-      none:
-        sname: *sname
-
-  surface:
-    use_cluster: True
-    parameter_groups:
-      none:
-        sname: *sname
-
-  TS_drift:
-    use_cluster: True
-    parameter_groups:
-      none:
-        sname: *sname
-
-  TS_levels:
-    use_cluster: True
-    parameter_groups:
-      none:
-        sname: *sname
-
-  velocity_levels:
-    use_cluster: True
-    parameter_groups:
-      none:
-        sname: *sname
-
-
-
-

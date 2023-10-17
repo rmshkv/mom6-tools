@@ -1,0 +1,1064 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Horizontal Mean difference and RMS: model versus observations &#8212; mom6_solutions automation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'TS_drift';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Temperature and Salinity at Depth Levels" href="TS_levels.html" />
+    <link rel="prev" title="Analysis of Surface Fields" href="surface.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">mom6_solutions automation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">mom6-tools example notebooks</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Equatorial_comparison.html">Equatorial Upperocean model vs. obs comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ocean_stats.html">Ocean Stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="poleward_heat_transport.html">Poleward Heat Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="section_transports.html">Transport across sections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="surface.html">Analysis of Surface Fields</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Horizontal Mean difference and RMS: model versus observations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TS_levels.html">Temperature and Salinity at Depth Levels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meridional_overturning.html">Meridional Overturning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="velocity_levels.html">Velocity at Depth Levels</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://jupyterhub.hpc.ucar.edu/hub/user-redirect/git-pull?repo=https%3A//github.com/rmshkv/nbscuid&urlpath=lab/tree/nbscuid/notebooks/TS_drift.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onJupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/TS_drift.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Horizontal Mean difference and RMS: model versus observations</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-a-3d-area-with-land-values-masked">Construct a 3D area with land values masked</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#horizontal-mean-difference-model-obs">Horizontal Mean difference (model - obs)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature">Temperature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#salinity">Salinity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#horizontal-mean-rmse-model-obs">Horizontal Mean RMSe (model - obs)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Temperature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Salinity</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p><span style="color:red; font-family:Helvetica Neue, Helvetica, Arial, sans-serif; font-size:2em;">An Exception was encountered at ‘<a href="#papermill-error-cell">In [13]</a>’.</span></p>
+<section class="tex2jax_ignore mathjax_ignore" id="horizontal-mean-difference-and-rms-model-versus-observations">
+<h1>Horizontal Mean difference and RMS: model versus observations<a class="headerlink" href="#horizontal-mean-difference-and-rms-model-versus-observations" title="Permalink to this heading">#</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">mom6_tools.horizontalMean</span></code> collection of functions for computing horizontal mean of <strong>difference</strong> and <strong>rms</strong> (model versus obs). This notebook servers as an example on how to compute the following operations:</p>
+<div class="math notranslate nohighlight">
+\[diff(t,z)= A_{TOT}(z)^{-1}\sum_{i=1}^n (y_i(z) - \hat{y_i(x,y,z)}) A_i(z),\]</div>
+<div class="math notranslate nohighlight">
+\[rms(t,z)= [A_{TOT}(z)^{-1}\sum_{i=1}^n (y_i(z) - \hat{y_i}(x,y,z))^2 A_i(z)]^{1/2},\]</div>
+<p>where <span class="math notranslate nohighlight">\(y\)</span>(z) is the model output at point <span class="math notranslate nohighlight">\(i\)</span> and level <span class="math notranslate nohighlight">\(z\)</span>, <span class="math notranslate nohighlight">\(\hat{y}(z)\)</span> is the observation at point <span class="math notranslate nohighlight">\(i\)</span> and level <span class="math notranslate nohighlight">\(z\)</span>, <span class="math notranslate nohighlight">\(n\)</span> is the total number of grid points in the horizontal (i.e., NX x NY), <span class="math notranslate nohighlight">\(A_{i}(z)\)</span> is the area of grid cell <span class="math notranslate nohighlight">\(i\)</span> at level <span class="math notranslate nohighlight">\(z\)</span>, and <span class="math notranslate nohighlight">\(A_{TOT}(z) = \sum_{i=1}^n A_i(z)\)</span> is the total ocean area at level z.</p>
+<p><strong>Important</strong>:</p>
+<p>With the porpuses of calculating T and S changes at specific regions, <span class="math notranslate nohighlight">\(A_{i}(z)\)</span> is multiplied by basin masks generated via <code class="docutils literal notranslate"><span class="pre">mom6_tools.m6toolbox.genBasinMasks</span></code>. See <a class="reference external" href="https://mom6-tools.readthedocs.io/en/latest/examples/region_masks.html">notebook</a> showing how to generate these masks.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mom6_tools.DiagsCase</span> <span class="kn">import</span> <span class="n">DiagsCase</span>
+<span class="kn">from</span> <span class="nn">mom6_tools.MOM6grid</span> <span class="kn">import</span> <span class="n">MOM6grid</span>
+<span class="kn">from</span> <span class="nn">mom6_tools.drift</span> <span class="kn">import</span> <span class="n">HorizontalMeanDiff_da</span><span class="p">,</span> <span class="n">HorizontalMeanRmse_da</span> 
+<span class="kn">from</span> <span class="nn">mom6_tools.m6plot</span> <span class="kn">import</span> <span class="n">ztplot</span>
+<span class="kn">from</span> <span class="nn">ncar_jobqueue</span> <span class="kn">import</span> <span class="n">NCARCluster</span>
+<span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
+<span class="kn">from</span> <span class="nn">mom6_tools.m6toolbox</span> <span class="kn">import</span> <span class="n">genBasinMasks</span><span class="p">,</span> <span class="n">request_workers</span><span class="p">,</span> \
+                                 <span class="n">weighted_temporal_mean</span><span class="p">,</span> <span class="n">add_global_attrs</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">Latex</span>
+<span class="kn">import</span> <span class="nn">yaml</span><span class="o">,</span> <span class="nn">intake</span><span class="o">,</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Basemap module not found. Some regional plots may not function properly
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read in the yaml file</span>
+<span class="n">diag_config_yml_path</span> <span class="o">=</span> <span class="s2">&quot;diag_config.yml&quot;</span>
+<span class="n">diag_config_yml</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">diag_config_yml_path</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">),</span> <span class="n">Loader</span><span class="o">=</span><span class="n">yaml</span><span class="o">.</span><span class="n">Loader</span><span class="p">)</span>
+
+<span class="c1"># load avg dates</span>
+<span class="n">avg</span> <span class="o">=</span> <span class="n">diag_config_yml</span><span class="p">[</span><span class="s1">&#39;Avg&#39;</span><span class="p">]</span>
+
+<span class="c1"># Create the case instance</span>
+<span class="n">dcase</span> <span class="o">=</span> <span class="n">DiagsCase</span><span class="p">(</span><span class="n">diag_config_yml</span><span class="p">[</span><span class="s1">&#39;Case&#39;</span><span class="p">])</span>
+<span class="n">DOUT_S</span> <span class="o">=</span> <span class="n">dcase</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s1">&#39;DOUT_S&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">DOUT_S</span><span class="p">:</span>
+  <span class="n">OUTDIR</span> <span class="o">=</span> <span class="n">dcase</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s1">&#39;DOUT_S_ROOT&#39;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;/ocn/hist/&#39;</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="n">OUTDIR</span> <span class="o">=</span> <span class="n">dcase</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s1">&#39;RUNDIR&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Output directory is:&#39;</span><span class="p">,</span> <span class="n">OUTDIR</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Casename is:&#39;</span><span class="p">,</span> <span class="n">dcase</span><span class="o">.</span><span class="n">casename</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Output directory is: /glade/scratch/gmarques/archive/g.e23_b15.GJRAv4.TL319_t232_zstar_N65.baseline.001/ocn/hist/
+Casename is: g.e23_b15.GJRAv4.TL319_t232_zstar_N65.baseline.001
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_parameters docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The following parameters must be set accordingly</span>
+<span class="c1">######################################################</span>
+
+<span class="c1"># create an empty class object</span>
+<span class="k">class</span> <span class="nc">args</span><span class="p">:</span>
+  <span class="k">pass</span>
+
+<span class="n">args</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">avg</span><span class="p">[</span><span class="s1">&#39;start_date&#39;</span><span class="p">]</span>
+<span class="n">args</span><span class="o">.</span><span class="n">end_date</span> <span class="o">=</span> <span class="n">avg</span><span class="p">[</span><span class="s1">&#39;end_date&#39;</span><span class="p">]</span>
+<span class="n">args</span><span class="o">.</span><span class="n">casename</span> <span class="o">=</span> <span class="n">dcase</span><span class="o">.</span><span class="n">casename</span>
+<span class="n">args</span><span class="o">.</span><span class="n">obs</span> <span class="o">=</span> <span class="s2">&quot;woa-2018-tx2_3v2-annual-all&quot;</span>
+<span class="n">args</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">dcase</span><span class="o">.</span><span class="n">casename</span><span class="o">+</span><span class="n">diag_config_yml</span><span class="p">[</span><span class="s1">&#39;Fnames&#39;</span><span class="p">][</span><span class="s1">&#39;z&#39;</span><span class="p">]</span>
+<span class="n">args</span><span class="o">.</span><span class="n">static</span> <span class="o">=</span> <span class="n">dcase</span><span class="o">.</span><span class="n">casename</span><span class="o">+</span><span class="n">diag_config_yml</span><span class="p">[</span><span class="s1">&#39;Fnames&#39;</span><span class="p">][</span><span class="s1">&#39;static&#39;</span><span class="p">]</span>
+<span class="n">args</span><span class="o">.</span><span class="n">savefigs</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">args</span><span class="o">.</span><span class="n">nw</span> <span class="o">=</span> <span class="mi">6</span> <span class="c1"># requesting 6 workers</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_injected-parameters docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parameters</span>
+<span class="n">sname</span> <span class="o">=</span> <span class="s2">&quot;placeholder-sname&quot;</span>
+<span class="n">subset_kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">product</span> <span class="o">=</span> <span class="s2">&quot;/glade/u/home/eromashkova/codes/mom6-tools/docs/source/examples/computed_notebooks/placeholder-sname/TS_drift.ipynb&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read grid info</span>
+<span class="n">grd</span> <span class="o">=</span> <span class="n">MOM6grid</span><span class="p">(</span><span class="n">OUTDIR</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">args</span><span class="o">.</span><span class="n">static</span><span class="p">,</span> <span class="n">xrformat</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+  <span class="n">depth</span> <span class="o">=</span> <span class="n">grd</span><span class="o">.</span><span class="n">depth_ocean</span><span class="o">.</span><span class="n">values</span>
+<span class="k">except</span><span class="p">:</span>
+  <span class="n">depth</span> <span class="o">=</span> <span class="n">grd</span><span class="o">.</span><span class="n">deptho</span><span class="o">.</span><span class="n">values</span>
+
+<span class="k">try</span><span class="p">:</span>
+  <span class="n">area</span> <span class="o">=</span> <span class="n">grd</span><span class="o">.</span><span class="n">area_t</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">grd</span><span class="o">.</span><span class="n">wet</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+  <span class="n">area</span> <span class="o">=</span> <span class="n">grd</span><span class="o">.</span><span class="n">areacello</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">grd</span><span class="o">.</span><span class="n">wet</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MOM6 grid successfully loaded... 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># remote Nan&#39;s, otherwise genBasinMasks won&#39;t work</span>
+<span class="n">depth</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">depth</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">basin_code</span> <span class="o">=</span> <span class="n">genBasinMasks</span><span class="p">(</span><span class="n">grd</span><span class="o">.</span><span class="n">geolon</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">grd</span><span class="o">.</span><span class="n">geolat</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="n">xda</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cluster</span> <span class="o">=</span> <span class="n">NCARCluster</span><span class="p">()</span>
+<span class="n">cluster</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">nw</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">cluster</span><span class="p">)</span>
+<span class="n">client</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+    <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;"> </div>
+    <div style="margin-left: 48px;">
+        <h3 style="margin-bottom: 0px;">Client</h3>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-85a1e465-6d33-11ee-9a90-3cecef1b11e4</p>
+        <table style="width: 100%; text-align: left;">
+
+        <tr>
+        
+            <td style="text-align: left;"><strong>Connection method:</strong> Cluster object</td>
+            <td style="text-align: left;"><strong>Cluster type:</strong> dask_jobqueue.PBSCluster</td>
+        
+        </tr>
+
+        
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Dashboard: </strong> <a href="/proxy/45807/status" target="_blank">/proxy/45807/status</a>
+                </td>
+                <td style="text-align: left;"></td>
+            </tr>
+        
+
+        </table>
+
+        
+            <button style="margin-bottom: 12px;" data-commandlinker-command="dask:populate-and-launch-layout" data-commandlinker-args='{"url": "/proxy/45807/status" }'>
+                Launch dashboard in JupyterLab
+            </button>
+        
+
+        
+            <details>
+            <summary style="margin-bottom: 20px;"><h3 style="display: inline;">Cluster Info</h3></summary>
+            <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-mod-trusted jp-OutputArea-output">
+    <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;">
+    </div>
+    <div style="margin-left: 48px;">
+        <h3 style="margin-bottom: 0px; margin-top: 0px;">PBSCluster</h3>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">4f9a4271</p>
+        <table style="width: 100%; text-align: left;">
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Dashboard:</strong> <a href="/proxy/45807/status" target="_blank">/proxy/45807/status</a>
+                </td>
+                <td style="text-align: left;">
+                    <strong>Workers:</strong> 0
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Total threads:</strong> 0
+                </td>
+                <td style="text-align: left;">
+                    <strong>Total memory:</strong> 0 B
+                </td>
+            </tr>
+            
+        </table>
+
+        <details>
+            <summary style="margin-bottom: 20px;">
+                <h3 style="display: inline;">Scheduler Info</h3>
+            </summary>
+
+            <div style="">
+    <div>
+        <div style="width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;"> </div>
+        <div style="margin-left: 48px;">
+            <h3 style="margin-bottom: 0px;">Scheduler</h3>
+            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-0ff14f15-dc6b-4945-bb5e-29d1580dd837</p>
+            <table style="width: 100%; text-align: left;">
+                <tr>
+                    <td style="text-align: left;">
+                        <strong>Comm:</strong> tcp://10.12.206.57:42319
+                    </td>
+                    <td style="text-align: left;">
+                        <strong>Workers:</strong> 0
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <strong>Dashboard:</strong> <a href="/proxy/45807/status" target="_blank">/proxy/45807/status</a>
+                    </td>
+                    <td style="text-align: left;">
+                        <strong>Total threads:</strong> 0
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <strong>Started:</strong> Just now
+                    </td>
+                    <td style="text-align: left;">
+                        <strong>Total memory:</strong> 0 B
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <details style="margin-left: 48px;">
+        <summary style="margin-bottom: 20px;">
+            <h3 style="display: inline;">Workers</h3>
+        </summary>
+
+        
+
+    </details>
+</div>
+
+        </details>
+    </div>
+</div>
+            </details>
+        
+
+    </div>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="n">ds</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s1">&#39;thetao&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="p">:</span>
+        <span class="n">ds</span><span class="p">[</span><span class="s2">&quot;thetao&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">h</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s1">&#39;so&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="p">:</span>
+        <span class="n">ds</span><span class="p">[</span><span class="s2">&quot;so&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">h</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ds</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read dataset</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">OUTDIR</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">args</span><span class="o">.</span><span class="n">z</span><span class="p">,</span>
+    <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">combine</span><span class="o">=</span><span class="s2">&quot;nested&quot;</span><span class="p">,</span> <span class="c1"># concatenate in order of files</span>
+    <span class="n">concat_dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="c1"># concatenate along time</span>
+    <span class="n">preprocess</span><span class="o">=</span><span class="n">preprocess</span><span class="p">,</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">chunk</span><span class="p">({</span><span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute thetao climatologies</span>
+<span class="n">var</span> <span class="o">=</span> <span class="s1">&#39;thetao&#39;</span>
+<span class="n">attrs</span> <span class="o">=</span>  <span class="p">{</span>
+         <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Annual mean climatology for &#39;</span><span class="o">+</span><span class="n">var</span><span class="p">,</span>
+         <span class="s1">&#39;start_date&#39;</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">start_date</span><span class="p">,</span>
+         <span class="s1">&#39;end_date&#39;</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">end_date</span><span class="p">,</span>
+         <span class="s1">&#39;reduction_method&#39;</span><span class="p">:</span> <span class="s1">&#39;annual mean weighted by days in each month&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;casename&#39;</span><span class="p">:</span> <span class="n">dcase</span><span class="o">.</span><span class="n">casename</span>
+         <span class="p">}</span>
+
+<span class="n">thetao_model</span> <span class="o">=</span> <span class="n">weighted_temporal_mean</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="n">var</span><span class="p">)</span>
+<span class="n">thetao_model</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">attrs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute thetao climatologies</span>
+<span class="n">var</span> <span class="o">=</span> <span class="s1">&#39;so&#39;</span>
+<span class="n">attrs</span> <span class="o">=</span>  <span class="p">{</span>
+         <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Annual mean climatology for &#39;</span><span class="o">+</span><span class="n">var</span><span class="p">,</span>
+         <span class="s1">&#39;start_date&#39;</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">start_date</span><span class="p">,</span>
+         <span class="s1">&#39;end_date&#39;</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">end_date</span><span class="p">,</span>
+         <span class="s1">&#39;reduction_method&#39;</span><span class="p">:</span> <span class="s1">&#39;annual mean weighted by days in each month&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;casename&#39;</span><span class="p">:</span> <span class="n">dcase</span><span class="o">.</span><span class="n">casename</span>
+         <span class="p">}</span>
+
+<span class="n">salt_model</span> <span class="o">=</span> <span class="n">weighted_temporal_mean</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="n">var</span><span class="p">)</span>
+<span class="n">salt_model</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">attrs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><span id="papermill-error-cell" style="color:red; font-family:Helvetica Neue, Helvetica, Arial, sans-serif; font-size:2em;">Execution using papermill encountered an exception here and stopped:</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load obs</span>
+<span class="n">catalog</span> <span class="o">=</span> <span class="n">intake</span><span class="o">.</span><span class="n">open_catalog</span><span class="p">(</span><span class="n">diag_config_yml</span><span class="p">[</span><span class="s1">&#39;oce_cat&#39;</span><span class="p">])</span>
+<span class="n">obs</span> <span class="o">=</span> <span class="n">catalog</span><span class="p">[</span><span class="n">args</span><span class="o">.</span><span class="n">obs</span><span class="p">]</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># load obs</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">catalog</span> <span class="o">=</span> <span class="n">intake</span><span class="o">.</span><span class="n">open_catalog</span><span class="p">(</span><span class="n">diag_config_yml</span><span class="p">[</span><span class="s1">&#39;oce_cat&#39;</span><span class="p">])</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">obs</span> <span class="o">=</span> <span class="n">catalog</span><span class="p">[</span><span class="n">args</span><span class="o">.</span><span class="n">obs</span><span class="p">]</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span>
+
+<span class="nn">File /glade/work/eromashkova/miniconda3/envs/mom6-diagnostics/lib/python3.11/site-packages/intake_xarray/base.py:69,</span> in <span class="ni">DataSourceMixin.to_dask</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">67</span> <span class="k">def</span> <span class="nf">to_dask</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Return xarray object where variables are dask arrays&quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">69</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_chunked</span><span class="p">()</span>
+
+<span class="nn">File /glade/work/eromashkova/miniconda3/envs/mom6-diagnostics/lib/python3.11/site-packages/intake_xarray/base.py:44,</span> in <span class="ni">DataSourceMixin.read_chunked</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">42</span> <span class="k">def</span> <span class="nf">read_chunked</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Return xarray object (which will have chunks)&quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">44</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_load_metadata</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ds</span>
+
+<span class="nn">File /glade/work/eromashkova/miniconda3/envs/mom6-diagnostics/lib/python3.11/site-packages/intake/source/base.py:283,</span> in <span class="ni">DataSourceBase._load_metadata</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">281</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;load metadata only if needed&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">282</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">283</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_schema</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">284</span>     <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="o">.</span><span class="n">dtype</span>
+<span class="g g-Whitespace">    </span><span class="mi">285</span>     <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="nn">File /glade/work/eromashkova/miniconda3/envs/mom6-diagnostics/lib/python3.11/site-packages/intake_xarray/base.py:18,</span> in <span class="ni">DataSourceMixin._get_schema</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="bp">self</span><span class="o">.</span><span class="n">urlpath</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_cache</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">urlpath</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ds</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">18</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_open_dataset</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span>     <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span>         <span class="s1">&#39;dims&#39;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ds</span><span class="o">.</span><span class="n">dims</span><span class="p">),</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span>         <span class="s1">&#39;data_vars&#39;</span><span class="p">:</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ds</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">coords</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span>                       <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ds</span><span class="o">.</span><span class="n">data_vars</span><span class="o">.</span><span class="n">keys</span><span class="p">()},</span>
+<span class="g g-Whitespace">     </span><span class="mi">24</span>         <span class="s1">&#39;coords&#39;</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ds</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span>     <span class="p">}</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span>     <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;on_server&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+
+<span class="nn">File /glade/work/eromashkova/miniconda3/envs/mom6-diagnostics/lib/python3.11/site-packages/intake_xarray/netcdf.py:87,</span> in <span class="ni">NetCDFSource._open_dataset</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">84</span>     <span class="n">_open_dataset</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span>
+<span class="g g-Whitespace">     </span><span class="mi">86</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_can_be_local</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">87</span>     <span class="n">url</span> <span class="o">=</span> <span class="n">fsspec</span><span class="o">.</span><span class="n">open_local</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">urlpath</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">storage_options</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">88</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">89</span>     <span class="c1"># https://github.com/intake/filesystem_spec/issues/476#issuecomment-732372918</span>
+<span class="g g-Whitespace">     </span><span class="mi">90</span>     <span class="n">url</span> <span class="o">=</span> <span class="n">fsspec</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">urlpath</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">storage_options</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+
+<span class="nn">File /glade/work/eromashkova/miniconda3/envs/mom6-diagnostics/lib/python3.11/site-packages/fsspec/core.py:472,</span> in <span class="ni">open_local</span><span class="nt">(url, mode, **storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">470</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Can only ensure local files when reading&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">471</span> <span class="n">of</span> <span class="o">=</span> <span class="n">open_files</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="o">**</span><span class="n">storage_options</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">472</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">of</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fs</span><span class="p">,</span> <span class="s2">&quot;local_file&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">473</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">474</span>         <span class="s2">&quot;open_local can only be used on a filesystem which&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">475</span>         <span class="s2">&quot; has attribute local_file=True&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">476</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">477</span> <span class="k">with</span> <span class="n">of</span> <span class="k">as</span> <span class="n">files</span><span class="p">:</span>
+
+<span class="nn">File /glade/work/eromashkova/miniconda3/envs/mom6-diagnostics/lib/python3.11/site-packages/fsspec/core.py:194,</span> in <span class="ni">OpenFiles.__getitem__</span><span class="nt">(self, item)</span>
+<span class="g g-Whitespace">    </span><span class="mi">193</span> <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">194</span>     <span class="n">out</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">195</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">slice</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span>         <span class="k">return</span> <span class="n">OpenFiles</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fs</span><span class="p">)</span>
+
+<span class="ne">IndexError</span>: list index out of range
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_diff</span> <span class="o">=</span> <span class="n">thetao_model</span> <span class="o">-</span> <span class="n">obs</span><span class="o">.</span><span class="n">thetao</span>
+<span class="n">salt_diff</span> <span class="o">=</span> <span class="n">salt_model</span> <span class="o">-</span> <span class="n">obs</span><span class="o">.</span><span class="n">so</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="construct-a-3d-area-with-land-values-masked">
+<h2>Construct a 3D area with land values masked<a class="headerlink" href="#construct-a-3d-area-with-land-values-masked" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">area3d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">area</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:],</span> <span class="nb">len</span><span class="p">(</span><span class="n">temp_diff</span><span class="o">.</span><span class="n">z_l</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">mask3d</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">area3d</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="n">temp_diff</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]),</span> <span class="n">coords</span><span class="o">=</span> <span class="p">{</span><span class="n">temp_diff</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">temp_diff</span><span class="o">.</span><span class="n">z_l</span><span class="p">,</span>
+                                                                   <span class="n">temp_diff</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">temp_diff</span><span class="o">.</span><span class="n">yh</span><span class="p">,</span>
+                                                                   <span class="n">temp_diff</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">temp_diff</span><span class="o">.</span><span class="n">xh</span><span class="p">})</span>
+<span class="n">area3d_masked</span> <span class="o">=</span> <span class="n">mask3d</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">temp_diff</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">==</span> <span class="n">temp_diff</span><span class="p">[</span><span class="mi">0</span><span class="p">,:])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="horizontal-mean-difference-model-obs">
+<h2>Horizontal Mean difference (model - obs)<a class="headerlink" href="#horizontal-mean-difference-model-obs" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">temp_bias</span> <span class="o">=</span> <span class="n">HorizontalMeanDiff_da</span><span class="p">(</span><span class="n">temp_diff</span><span class="p">,</span><span class="n">weights</span><span class="o">=</span><span class="n">area3d_masked</span><span class="p">,</span> <span class="n">basins</span><span class="o">=</span><span class="n">basin_code</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Saving temp_bias...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s1">&#39;ncfiles&#39;</span><span class="p">):</span>
+      <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;mkdir -p ncfiles&#39;</span><span class="p">)</span>
+ 
+<span class="n">var</span> <span class="o">=</span> <span class="s1">&#39;thetao&#39;</span>
+<span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;casename&#39;</span><span class="p">:</span> <span class="n">dcase</span><span class="o">.</span><span class="n">casename</span><span class="p">,</span>
+         <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Annual mean bias for &#39;</span><span class="o">+</span><span class="n">var</span><span class="p">,</span>
+         <span class="s1">&#39;obs&#39;</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">obs</span>
+        <span class="p">}</span>
+
+<span class="n">add_global_attrs</span><span class="p">(</span><span class="n">temp_bias</span><span class="p">,</span><span class="n">attrs</span><span class="p">)</span>
+<span class="n">temp_bias</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span><span class="s1">&#39;ncfiles/&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">dcase</span><span class="o">.</span><span class="n">casename</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;_</span><span class="si">{}</span><span class="s1">_drift.nc&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">var</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="temperature">
+<h2>Temperature<a class="headerlink" href="#temperature" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">reg</span> <span class="ow">in</span> <span class="n">temp_bias</span><span class="o">.</span><span class="n">region</span><span class="p">:</span>
+    <span class="c1"># remove Nan&#39;s</span>
+    <span class="n">diff_reg</span> <span class="o">=</span> <span class="n">temp_bias</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">reg</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="s1">&#39;z_l&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">diff_reg</span><span class="o">.</span><span class="n">z_l</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mf">500.0</span><span class="p">:</span>
+      <span class="n">splitscale</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">splitscale</span> <span class="o">=</span>  <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="o">-</span><span class="mf">500.</span><span class="p">,</span> <span class="o">-</span><span class="n">diff_reg</span><span class="o">.</span><span class="n">z_l</span><span class="o">.</span><span class="n">max</span><span class="p">()]</span>
+
+    <span class="n">ztplot</span><span class="p">(</span><span class="n">diff_reg</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">diff_reg</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">diff_reg</span><span class="o">.</span><span class="n">z_l</span><span class="o">.</span><span class="n">values</span><span class="o">*-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ignore</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">splitscale</span><span class="o">=</span><span class="n">splitscale</span><span class="p">,</span> 
+           <span class="n">suptitle</span><span class="o">=</span><span class="n">dcase</span><span class="o">.</span><span class="n">_casename</span><span class="p">,</span> <span class="n">contour</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+           <span class="n">title</span><span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">values</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;, Potential Temperature [C], (model - obs)&#39;</span><span class="p">,</span> 
+           <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;dunnePM&#39;</span><span class="p">,</span> <span class="n">autocenter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">tunits</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">salt_bias</span> <span class="o">=</span> <span class="n">HorizontalMeanDiff_da</span><span class="p">(</span><span class="n">salt_diff</span><span class="p">,</span><span class="n">weights</span><span class="o">=</span><span class="n">area3d_masked</span><span class="p">,</span> <span class="n">basins</span><span class="o">=</span><span class="n">basin_code</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Saving salt_bias...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s1">&#39;ncfiles&#39;</span><span class="p">):</span>
+      <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;mkdir -p ncfiles&#39;</span><span class="p">)</span>
+ 
+<span class="n">var</span> <span class="o">=</span> <span class="s1">&#39;so&#39;</span>
+<span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;casename&#39;</span><span class="p">:</span> <span class="n">dcase</span><span class="o">.</span><span class="n">casename</span><span class="p">,</span>
+         <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Annual mean bias for &#39;</span><span class="o">+</span><span class="n">var</span><span class="p">,</span>
+         <span class="s1">&#39;obs&#39;</span><span class="p">:</span> <span class="n">args</span><span class="o">.</span><span class="n">obs</span>
+        <span class="p">}</span>
+
+<span class="n">add_global_attrs</span><span class="p">(</span><span class="n">salt_bias</span><span class="p">,</span><span class="n">attrs</span><span class="p">)</span>
+<span class="n">salt_bias</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span><span class="s1">&#39;ncfiles/&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">dcase</span><span class="o">.</span><span class="n">casename</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;_</span><span class="si">{}</span><span class="s1">_drift.nc&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">var</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="salinity">
+<h2>Salinity<a class="headerlink" href="#salinity" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">reg</span> <span class="ow">in</span> <span class="n">salt_bias</span><span class="o">.</span><span class="n">region</span><span class="p">:</span>
+    <span class="c1"># remove Nan&#39;s</span>
+    <span class="n">diff_reg</span> <span class="o">=</span> <span class="n">salt_bias</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">reg</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="s1">&#39;z_l&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">diff_reg</span><span class="o">.</span><span class="n">z_l</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mf">500.0</span><span class="p">:</span>
+      <span class="n">splitscale</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">splitscale</span> <span class="o">=</span>  <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="o">-</span><span class="mf">500.</span><span class="p">,</span> <span class="o">-</span><span class="n">diff_reg</span><span class="o">.</span><span class="n">z_l</span><span class="o">.</span><span class="n">max</span><span class="p">()]</span>
+
+    <span class="n">ztplot</span><span class="p">(</span><span class="n">diff_reg</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">diff_reg</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">diff_reg</span><span class="o">.</span><span class="n">z_l</span><span class="o">.</span><span class="n">values</span><span class="o">*-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ignore</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">splitscale</span><span class="o">=</span><span class="n">splitscale</span><span class="p">,</span> 
+           <span class="n">suptitle</span><span class="o">=</span><span class="n">dcase</span><span class="o">.</span><span class="n">_casename</span><span class="p">,</span> <span class="n">contour</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+           <span class="n">title</span><span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">values</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;, Salinity [psu], (model - obs)&#39;</span><span class="p">,</span> 
+           <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;dunnePM&#39;</span><span class="p">,</span> <span class="n">autocenter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">tunits</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="horizontal-mean-rmse-model-obs">
+<h2>Horizontal Mean RMSe (model - obs)<a class="headerlink" href="#horizontal-mean-rmse-model-obs" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO</span>
+<span class="n">temp_rms</span> <span class="o">=</span> <span class="n">HorizontalMeanDiff_da</span><span class="p">(</span><span class="n">temp_diff</span><span class="p">,</span><span class="n">weights</span><span class="o">=</span><span class="n">area3d_masked</span><span class="p">,</span> <span class="n">basins</span><span class="o">=</span><span class="n">basin_code</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h2>Temperature<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">reg</span> <span class="ow">in</span> <span class="n">temp_rms</span><span class="o">.</span><span class="n">region</span><span class="p">:</span>
+    <span class="c1"># remove Nan&#39;s</span>
+    <span class="n">diff_reg</span> <span class="o">=</span> <span class="n">temp_rms</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">reg</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="s1">&#39;z_l&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">diff_reg</span><span class="o">.</span><span class="n">z_l</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mf">500.0</span><span class="p">:</span>
+      <span class="n">splitscale</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">splitscale</span> <span class="o">=</span>  <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="o">-</span><span class="mf">500.</span><span class="p">,</span> <span class="o">-</span><span class="n">diff_reg</span><span class="o">.</span><span class="n">z_l</span><span class="o">.</span><span class="n">max</span><span class="p">()]</span>
+
+    <span class="n">ztplot</span><span class="p">(</span><span class="n">diff_reg</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">diff_reg</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">diff_reg</span><span class="o">.</span><span class="n">z_l</span><span class="o">.</span><span class="n">values</span><span class="o">*-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ignore</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">splitscale</span><span class="o">=</span><span class="n">splitscale</span><span class="p">,</span> 
+           <span class="n">suptitle</span><span class="o">=</span><span class="n">dcase</span><span class="o">.</span><span class="n">_casename</span><span class="p">,</span> <span class="n">contour</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+           <span class="n">title</span><span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">values</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;, Potential Temperature [C], RMSe&#39;</span><span class="p">,</span> 
+           <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;dunnePM&#39;</span><span class="p">,</span> <span class="n">autocenter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">tunits</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO</span>
+<span class="n">salt_rms</span> <span class="o">=</span> <span class="n">HorizontalMeanRmse_da</span><span class="p">(</span><span class="n">salt_diff</span><span class="p">,</span><span class="n">weights</span><span class="o">=</span><span class="n">area3d_masked</span><span class="p">,</span> <span class="n">basins</span><span class="o">=</span><span class="n">basin_code</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h2>Salinity<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">reg</span> <span class="ow">in</span> <span class="n">salt_rms</span><span class="o">.</span><span class="n">region</span><span class="p">:</span>
+    <span class="c1"># remove Nan&#39;s</span>
+    <span class="n">diff_reg</span> <span class="o">=</span> <span class="n">salt_rms</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">reg</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="s1">&#39;z_l&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">diff_reg</span><span class="o">.</span><span class="n">z_l</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mf">500.0</span><span class="p">:</span>
+      <span class="n">splitscale</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">splitscale</span> <span class="o">=</span>  <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="o">-</span><span class="mf">500.</span><span class="p">,</span> <span class="o">-</span><span class="n">diff_reg</span><span class="o">.</span><span class="n">z_l</span><span class="o">.</span><span class="n">max</span><span class="p">()]</span>
+
+    <span class="n">ztplot</span><span class="p">(</span><span class="n">diff_reg</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">diff_reg</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">diff_reg</span><span class="o">.</span><span class="n">z_l</span><span class="o">.</span><span class="n">values</span><span class="o">*-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ignore</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> 
+           <span class="n">splitscale</span><span class="o">=</span><span class="n">splitscale</span><span class="p">,</span> <span class="n">suptitle</span><span class="o">=</span><span class="n">dcase</span><span class="o">.</span><span class="n">_casename</span><span class="p">,</span> <span class="n">contour</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+           <span class="n">title</span><span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">values</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;, Salinity [psu], RMSe&#39;</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> 
+           <span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;dunnePM&#39;</span><span class="p">,</span> <span class="n">autocenter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">tunits</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span> 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "mom6-diagnostics"
+        },
+        kernelOptions: {
+            name: "mom6-diagnostics",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'mom6-diagnostics'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="surface.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Analysis of Surface Fields</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="TS_levels.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Temperature and Salinity at Depth Levels</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-a-3d-area-with-land-values-masked">Construct a 3D area with land values masked</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#horizontal-mean-difference-model-obs">Horizontal Mean difference (model - obs)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature">Temperature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#salinity">Salinity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#horizontal-mean-rmse-model-obs">Horizontal Mean RMSe (model - obs)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Temperature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Salinity</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By none
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
